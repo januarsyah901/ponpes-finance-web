@@ -5,6 +5,12 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Ponpes Finance - Sistem Manajemen Keuangan Pesantren',
   description: 'Aplikasi manajemen keuangan modern untuk bendahara pesantren dan santri',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Ponpes Finance',
+  },
 };
 
 export const viewport: Viewport = {
