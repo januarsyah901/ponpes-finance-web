@@ -18,6 +18,8 @@ export function formatDateIndo(dateInput: string | Date | null | undefined): str
   }).format(d);
 }
 
+export const formatTanggalIndo = formatDateIndo;
+
 export const INDO_MONTHS = [
   'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
