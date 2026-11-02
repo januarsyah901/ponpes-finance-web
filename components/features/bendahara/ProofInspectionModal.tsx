@@ -119,8 +119,8 @@ export function ProofInspectionModal({
       return;
     }
 
-    if (!alasanKoreksi.trim()) {
-      setActionError('Alasan penyesuaian nominal wajib diisi');
+    if (!alasanKoreksi.trim() || alasanKoreksi.trim().length < 5) {
+      setActionError('Alasan penyesuaian nominal wajib diisi (minimal 5 karakter)');
       return;
     }
 

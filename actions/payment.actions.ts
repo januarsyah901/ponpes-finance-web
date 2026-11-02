@@ -119,13 +119,19 @@ export async function verifyPaymentAction(input: {
       return { success: false, error: 'Data pembayaran tidak ditemukan' };
     }
 
-    if (existing.status === 'terverifikasi') {
-      return { success: false, error: 'Pembayaran ini sudah pernah diverifikasi sebelumnya' };
+    if (existing.status !== 'menunggu_verifikasi') {
+      return { success: false, error: 'Hanya pembayaran dengan status menunggu verifikasi yang dapat diverifikasi' };
     }
 
     if (user.role === 'bendahara_komplek' && user.complexIds && !user.complexIds.includes('all')) {
       if (!user.complexIds.includes(existing.komplekId)) {
         return { success: false, error: 'Anda tidak memiliki hak akses verifikasi pada komplek ini' };
+      }
+    }
+
+    if (input.nominalDiverifikasi !== undefined && input.nominalDiverifikasi !== existing.nominal) {
+      if (!input.alasanKoreksi || input.alasanKoreksi.trim().length < 5) {
+        return { success: false, error: 'Alasan penyesuaian nominal wajib diisi (minimal 5 karakter)' };
       }
     }
 
