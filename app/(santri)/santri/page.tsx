@@ -134,6 +134,11 @@ export default async function SantriDashboardPage() {
           <h2 className="text-sm font-semibold uppercase tracking-wider text-[#64748B]">
             Daftar Tagihan Anda
           </h2>
+          <Link href="/santri/bayar">
+            <Button size="sm" className="bg-[#0F5132] hover:bg-[#0F5132]/90 text-white text-xs font-semibold">
+              Bayar Tagihan
+            </Button>
+          </Link>
         </div>
 
         {bills.length === 0 ? (
