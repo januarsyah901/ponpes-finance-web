@@ -3,20 +3,20 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-  "relative w-full rounded-[8px] border px-4 py-3 text-sm shadow-none [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-3.5 [&>svg]:size-4 [&>svg~*]:pl-7",
+  "relative w-full rounded-[18px] border px-4 py-3 text-sm shadow-none [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-3.5 [&>svg]:size-4 [&>svg~*]:pl-7",
   {
     variants: {
       variant: {
         default:
-          "border-[rgba(0,0,0,0.08)] bg-[#fbfbfa] text-[#111111] [&>svg]:text-[#111111]",
+          "border-[#E8E8E8] bg-[#F5F5F5] text-[#202119] [&>svg]:text-[#202119]",
         destructive:
-          "border-[#f9c5c0] bg-[#fdeeed] text-[#e32d14] [&>svg]:text-[#e32d14]",
+          "border-[rgba(200,76,90,0.2)] bg-[#FCEDEF] text-[#C84C5A] [&>svg]:text-[#C84C5A]",
         success:
-          "border-[rgba(43,110,79,0.2)] bg-[#ebf5ee] text-[#2b6e4f] [&>svg]:text-[#2b6e4f]",
+          "border-[rgba(43,138,96,0.2)] bg-[#EAF7EF] text-[#2B8A60] [&>svg]:text-[#2B8A60]",
         warning:
-          "border-[#fde2a7] bg-[#fff6e5] text-[#b47800] [&>svg]:text-[#b47800]",
+          "border-[rgba(194,65,12,0.2)] bg-[#FFF7ED] text-[#C2410C] [&>svg]:text-[#C2410C]",
         info:
-          "border-[#bfe0fd] bg-[#e6f3fe] text-[#097fe8] [&>svg]:text-[#097fe8]",
+          "border-[rgba(49,95,196,0.2)] bg-[#EDF2FB] text-[#315FC4] [&>svg]:text-[#315FC4]",
       },
     },
     defaultVariants: {

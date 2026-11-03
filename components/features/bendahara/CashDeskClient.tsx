@@ -259,10 +259,10 @@ export function CashDeskClient({
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold font-heading text-[#111111]">
+        <h1 className="text-2xl font-bold font-sans text-[#202119]">
           Meja Penerimaan Kas Tunai
         </h1>
-        <p className="text-xs text-[#757575] mt-1">
+        <p className="text-xs text-[#626262] mt-1">
           Pencatatan pembayaran tunai langsung di kantor bendahara dengan kuitansi instan
         </p>
       </div>
@@ -271,44 +271,44 @@ export function CashDeskClient({
         {/* Left Column: Form Intake */}
         <div className="lg:col-span-7 space-y-6">
           {/* 1. Santri Selector Card */}
-          <Card className="border-[rgba(0,0,0,0.08)] bg-white rounded-[12px] shadow-none">
+          <Card className="border border-[#E8E8E8] bg-white rounded-[18px] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
             <CardHeader className="pb-3">
-              <CardTitle className="text-xs font-semibold text-[#757575] uppercase tracking-wider flex items-center gap-2">
-                <User className="h-4 w-4 text-[#0075de]" />
+              <CardTitle className="text-xs font-semibold text-[#626262] uppercase tracking-wider flex items-center gap-2">
+                <User className="h-4 w-4 text-[#202119]" />
                 <span>Pilih Santri</span>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {/* Typeahead Search Input */}
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#757575]" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#747474]" />
                 <Input
                   placeholder="Ketik NIS atau nama santri..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9 text-xs border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
+                  className="pl-9 text-xs border border-[#E8E8E8] rounded-[8px] bg-white text-[#202119] placeholder:text-[#747474] focus-visible:ring-[#315FC4] shadow-none"
                 />
               </div>
 
               {/* Autocomplete Dropdown List */}
               {matchingSantri.length > 0 && (
-                <div className="rounded-[12px] border border-[rgba(0,0,0,0.08)] bg-white shadow-none overflow-hidden divide-y divide-[rgba(0,0,0,0.08)] max-h-56 overflow-y-auto">
+                <div className="rounded-[18px] border border-[#E8E8E8] bg-white shadow-none overflow-hidden divide-y divide-[#E8E8E8] max-h-56 overflow-y-auto">
                   {matchingSantri.map((s) => (
                     <button
                       key={s.id}
                       type="button"
                       onClick={() => selectSantri(s)}
-                      className="w-full p-3 text-left hover:bg-[#e6f3fe]/50 transition-colors flex items-center justify-between cursor-pointer"
+                      className="w-full p-3 text-left hover:bg-[#F5F5F5] transition-colors flex items-center justify-between cursor-pointer"
                     >
                       <div>
-                        <div className="font-semibold text-xs text-[#111111]">{s.nama}</div>
-                        <div className="text-[11px] text-[#757575]">
+                        <div className="font-semibold text-xs text-[#202119]">{s.nama}</div>
+                        <div className="text-[11px] text-[#626262]">
                           NIS: <span className="font-mono">{s.nis}</span> • {s.komplekNama} ({s.kategoriNama})
                         </div>
                       </div>
                       <div className="text-right">
-                        <div className="text-[10px] text-[#757575]">Saldo Tabungan</div>
-                        <div className="text-xs font-bold font-mono text-[#0075de]">
+                        <div className="text-[10px] text-[#626262]">Saldo Tabungan</div>
+                        <div className="text-xs font-bold font-mono text-[#202119]">
                           {formatRupiah(s.saldoTabungan)}
                         </div>
                       </div>
@@ -319,22 +319,22 @@ export function CashDeskClient({
 
               {/* Selected Santri Badge Card */}
               {selectedSantri && (
-                <div className="p-4 rounded-[12px] bg-[#e6f3fe]/40 border border-[rgba(0,117,222,0.2)] flex items-start justify-between">
+                <div className="p-4 rounded-[18px] bg-[#F5F5F5] border border-[#E8E8E8] flex items-start justify-between">
                   <div>
-                    <div className="font-bold text-sm text-[#111111]">{selectedSantri.nama}</div>
-                    <div className="text-xs text-[#757575] mt-0.5">
-                      NIS: <span className="font-mono text-[#111111] font-semibold">{selectedSantri.nis}</span> • {selectedSantri.komplekNama}
+                    <div className="font-bold text-sm text-[#202119]">{selectedSantri.nama}</div>
+                    <div className="text-xs text-[#626262] mt-0.5">
+                      NIS: <span className="font-mono text-[#202119] font-semibold">{selectedSantri.nis}</span> • {selectedSantri.komplekNama}
                     </div>
-                    <div className="text-[11px] text-[#757575] mt-1">
-                      Kategori: <span className="font-medium text-[#111111]">{selectedSantri.kategoriNama}</span>
+                    <div className="text-[11px] text-[#626262] mt-1">
+                      Kategori: <span className="font-medium text-[#202119]">{selectedSantri.kategoriNama}</span>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-[10px] uppercase font-semibold text-[#757575]">Saldo Tabungan</div>
-                    <div className="font-mono font-bold text-sm text-[#0075de]">
+                    <div className="text-[10px] uppercase font-semibold text-[#626262]">Saldo Tabungan</div>
+                    <div className="font-mono font-bold text-sm text-[#202119]">
                       {formatRupiah(selectedSantri.saldoTabungan)}
                     </div>
-                    <div className="text-[10px] text-[#b47800] font-medium mt-1">
+                    <div className="text-[10px] text-[#C84C5A] font-medium mt-1">
                       Tunggakan: {formatRupiah(totalOutstanding)}
                     </div>
                   </div>
@@ -346,20 +346,20 @@ export function CashDeskClient({
           {/* 2. Payment Amount & Date Card */}
           {selectedSantri && (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <Card className="border-[rgba(0,0,0,0.08)] bg-white rounded-[12px] shadow-none">
+              <Card className="border border-[#E8E8E8] bg-white rounded-[18px] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-xs font-semibold text-[#757575] uppercase tracking-wider flex items-center gap-2">
-                    <Banknote className="h-4 w-4 text-[#0075de]" />
+                  <CardTitle className="text-xs font-semibold text-[#626262] uppercase tracking-wider flex items-center gap-2">
+                    <Banknote className="h-4 w-4 text-[#202119]" />
                     <span>Nominal Pembayaran Tunai</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-1.5">
-                    <Label htmlFor="nominalTunai" className="text-xs font-semibold text-[#111111]">
-                      Uang Diterima (Rp) <span className="text-[#e32d14]">*</span>
+                    <Label htmlFor="nominalTunai" className="text-xs font-semibold text-[#202119]">
+                      Uang Diterima (Rp) <span className="text-[#C84C5A]">*</span>
                     </Label>
                     <div className="relative">
-                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono font-semibold text-sm text-[#757575]">
+                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono font-semibold text-sm text-[#626262]">
                         Rp
                       </span>
                       <Input
@@ -369,7 +369,7 @@ export function CashDeskClient({
                         value={nominalInput}
                         onChange={handleNominalChange}
                         placeholder="0"
-                        className="pl-12 font-mono text-xl font-bold text-[#111111] border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
+                        className="pl-12 font-mono text-xl font-bold text-[#202119] border border-[#E8E8E8] rounded-[8px] bg-white focus-visible:ring-[#315FC4] shadow-none"
                         required
                       />
                     </div>
@@ -381,7 +381,7 @@ export function CashDeskClient({
                       <button
                         type="button"
                         onClick={() => handleQuickNominal(santriUnpaidBills[0].sisa)}
-                        className="px-3 py-1.5 rounded-[8px] border border-[rgba(0,0,0,0.08)] text-xs font-medium text-[#111111] hover:bg-[#f6f5f4] transition-colors cursor-pointer"
+                        className="px-3 py-1.5 rounded-[8px] border border-[#E8E8E8] bg-white text-xs font-medium text-[#202119] hover:bg-[#F5F5F5] transition-colors cursor-pointer"
                       >
                         1 Bulan ({formatRupiah(santriUnpaidBills[0].sisa)})
                       </button>
@@ -391,7 +391,7 @@ export function CashDeskClient({
                       <button
                         type="button"
                         onClick={() => handleQuickNominal(totalOutstanding)}
-                        className="px-3 py-1.5 rounded-[8px] border border-[rgba(0,117,222,0.2)] bg-[#e6f3fe] text-xs font-semibold text-[#0075de] hover:bg-[#d5ebfd] transition-colors cursor-pointer"
+                        className="px-3 py-1.5 rounded-[8px] border border-[#202119] bg-[#202119] text-xs font-semibold text-white hover:bg-[#2e2f26] transition-colors cursor-pointer"
                       >
                         Lunas Semua ({formatRupiah(totalOutstanding)})
                       </button>
@@ -400,14 +400,14 @@ export function CashDeskClient({
                     <button
                       type="button"
                       onClick={() => handleQuickNominal(500000)}
-                      className="px-3 py-1.5 rounded-[8px] border border-[rgba(0,0,0,0.08)] text-xs font-medium text-[#111111] hover:bg-[#f6f5f4] transition-colors cursor-pointer"
+                      className="px-3 py-1.5 rounded-[8px] border border-[#E8E8E8] bg-white text-xs font-medium text-[#202119] hover:bg-[#F5F5F5] transition-colors cursor-pointer"
                     >
                       Rp 500.000
                     </button>
                     <button
                       type="button"
                       onClick={() => handleQuickNominal(1000000)}
-                      className="px-3 py-1.5 rounded-[8px] border border-[rgba(0,0,0,0.08)] text-xs font-medium text-[#111111] hover:bg-[#f6f5f4] transition-colors cursor-pointer"
+                      className="px-3 py-1.5 rounded-[8px] border border-[#E8E8E8] bg-white text-xs font-medium text-[#202119] hover:bg-[#F5F5F5] transition-colors cursor-pointer"
                     >
                       Rp 1.000.000
                     </button>
@@ -415,7 +415,7 @@ export function CashDeskClient({
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                     <div className="space-y-1.5">
-                      <Label htmlFor="tanggalBayarKas" className="text-xs font-semibold text-[#111111]">
+                      <Label htmlFor="tanggalBayarKas" className="text-xs font-semibold text-[#202119]">
                         Tanggal Pembayaran
                       </Label>
                       <Input
@@ -424,12 +424,12 @@ export function CashDeskClient({
                         value={tanggalBayar}
                         max={new Date().toISOString().split('T')[0]}
                         onChange={(e) => setTanggalBayar(e.target.value)}
-                        className="border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
+                        className="border border-[#E8E8E8] rounded-[8px] bg-white text-[#202119] focus-visible:ring-[#315FC4] shadow-none"
                         required
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <Label htmlFor="catatanKas" className="text-xs font-semibold text-[#111111]">
+                      <Label htmlFor="catatanKas" className="text-xs font-semibold text-[#202119]">
                         Catatan (Opsional)
                       </Label>
                       <Input
@@ -438,7 +438,7 @@ export function CashDeskClient({
                         value={catatan}
                         onChange={(e) => setCatatan(e.target.value)}
                         maxLength={250}
-                        className="border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
+                        className="border border-[#E8E8E8] rounded-[8px] bg-white text-[#202119] focus-visible:ring-[#315FC4] shadow-none"
                       />
                     </div>
                   </div>
@@ -446,7 +446,7 @@ export function CashDeskClient({
               </Card>
 
               {errorMessage && (
-                <div className="p-3 rounded-[12px] bg-[#fdeeed] border border-[#e32d14]/20 text-[#e32d14] text-xs flex items-center gap-2">
+                <div className="p-3 rounded-[18px] bg-[#FCEDEF] border border-[rgba(200,76,90,0.2)] text-[#C84C5A] text-xs flex items-center gap-2">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{errorMessage}</span>
                 </div>
@@ -455,7 +455,7 @@ export function CashDeskClient({
               <Button
                 type="submit"
                 disabled={isSubmitting || nominal <= 0}
-                className="w-full h-12 bg-[#0075de] hover:bg-[#0060b8] text-white font-semibold text-sm rounded-[8px] shadow-none cursor-pointer"
+                className="w-full h-12 bg-[#202119] hover:bg-[#2e2f26] text-white font-semibold text-sm rounded-[8px] shadow-none cursor-pointer focus-visible:ring-[#315FC4]"
               >
                 {isSubmitting ? 'Memproses Kas & Alokasi...' : `Konfirmasi Penerimaan Kas (${formatRupiah(nominal)})`}
               </Button>
@@ -465,20 +465,20 @@ export function CashDeskClient({
 
         {/* Right Column: Live FIFO Allocation Preview */}
         <div className="lg:col-span-5 space-y-6">
-          <Card className="border-[rgba(0,0,0,0.08)] bg-white rounded-[12px] shadow-none sticky top-20">
-            <CardHeader className="pb-3 border-b border-[rgba(0,0,0,0.08)]">
-              <CardTitle className="text-xs font-semibold text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="h-4 w-4 text-[#097fe8]" />
+          <Card className="border border-[#E8E8E8] bg-white rounded-[18px] shadow-[0_1px_3px_rgba(0,0,0,0.04)] sticky top-20">
+            <CardHeader className="pb-3 border-b border-[#E8E8E8]">
+              <CardTitle className="text-xs font-semibold text-[#202119] uppercase tracking-wider flex items-center gap-1.5">
+                <Sparkles className="h-4 w-4 text-[#F4512A]" />
                 <span>Simulasi Alokasi Otomatis (FIFO)</span>
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-4 space-y-4">
               {!selectedSantri ? (
-                <div className="text-center py-12 text-[#757575] text-xs">
+                <div className="text-center py-12 text-[#626262] text-xs">
                   <p>Pilih santri terlebih dahulu untuk melihat simulasi alokasi tagihan secara real-time.</p>
                 </div>
               ) : !allocationPreview || allocationPreview.items.length === 0 ? (
-                <div className="p-4 rounded-[12px] bg-[#f6f5f4] border border-[rgba(0,0,0,0.08)] text-xs text-[#757575] text-center">
+                <div className="p-4 rounded-[8px] bg-[#F5F5F5] border border-[#E8E8E8] text-xs text-[#626262] text-center">
                   Tidak ada tagihan tertunggak. Kelebihan pembayaran akan dialokasikan sebagai pembayaran di muka (bulan mendatang).
                 </div>
               ) : (
@@ -487,27 +487,27 @@ export function CashDeskClient({
                     {allocationPreview.items.map((item, idx) => (
                       <div
                         key={idx}
-                        className="p-3 rounded-[12px] border border-[rgba(0,0,0,0.08)] bg-[#f6f5f4] text-xs space-y-1.5"
+                        className="p-3 rounded-[8px] border border-[#E8E8E8] bg-[#F5F5F5] text-xs space-y-1.5"
                       >
-                        <div className="flex items-center justify-between font-semibold text-[#111111]">
+                        <div className="flex items-center justify-between font-semibold text-[#202119]">
                           <span>{item.judul}</span>
-                          <span className="font-mono text-[#0075de]">
+                          <span className="font-mono text-[#202119] font-bold">
                             {formatRupiah(item.allocation)}
                           </span>
                         </div>
-                        <div className="grid grid-cols-2 gap-1 text-[11px] text-[#757575]">
+                        <div className="grid grid-cols-2 gap-1 text-[11px] text-[#626262]">
                           <div>
-                            Tabungan: <span className="font-mono font-medium text-[#111111]">{formatRupiah(item.tabungan)}</span>
+                            Tabungan: <span className="font-mono font-medium text-[#2B8A60]">{formatRupiah(item.tabungan)}</span>
                           </div>
                           <div>
-                            Operasional: <span className="font-mono font-medium text-[#111111]">{formatRupiah(item.operasional)}</span>
+                            Operasional: <span className="font-mono font-medium text-[#202119]">{formatRupiah(item.operasional)}</span>
                           </div>
                         </div>
-                        <div className="flex items-center justify-between text-[10px] pt-1 border-t border-[rgba(0,0,0,0.08)]">
-                          <span className={item.statusAfter === 'lunas' ? 'text-[#097fe8] font-semibold' : 'text-[#b47800] font-semibold'}>
+                        <div className="flex items-center justify-between text-[10px] pt-1 border-t border-[#E8E8E8]">
+                          <span className={item.statusAfter === 'lunas' ? 'text-[#2B8A60] font-semibold' : 'text-[#C2410C] font-semibold'}>
                             Status: {item.statusAfter === 'lunas' ? 'Lunas' : 'Sebagian'}
                           </span>
-                          <span className="text-[#757575]">
+                          <span className="text-[#626262]">
                             Sisa: {formatRupiah(item.sisaAfter)}
                           </span>
                         </div>
@@ -516,28 +516,28 @@ export function CashDeskClient({
                   </div>
 
                   {allocationPreview.advanceSpillover > 0 && (
-                    <div className="p-3 rounded-[12px] bg-[#e6f3fe] border border-[rgba(0,117,222,0.2)] text-xs text-[#111111] space-y-1">
-                      <div className="font-semibold">Pembayaran di Muka (Kelebihan Dana):</div>
-                      <div className="font-mono font-bold text-sm text-[#0075de]">
+                    <div className="p-3 rounded-[8px] bg-[#F5F5F5] border border-[#E8E8E8] text-xs text-[#202119] space-y-1">
+                      <div className="font-semibold text-[#202119]">Pembayaran di Muka (Kelebihan Dana):</div>
+                      <div className="font-mono font-bold text-sm text-[#202119]">
                         {formatRupiah(allocationPreview.advanceSpillover)}
                       </div>
-                      <p className="text-[11px] text-[#097fe8]">
+                      <p className="text-[11px] text-[#626262]">
                         Otomatis dialokasikan ke tagihan syahriah bulan kalender berikutnya.
                       </p>
                     </div>
                   )}
 
                   {/* Summary Footer */}
-                  <div className="pt-3 border-t border-[rgba(0,0,0,0.08)] space-y-1 text-xs">
-                    <div className="flex justify-between text-[#757575]">
+                  <div className="pt-3 border-t border-[#E8E8E8] space-y-1 text-xs">
+                    <div className="flex justify-between text-[#626262]">
                       <span>Total Masuk Tabungan:</span>
-                      <span className="font-mono font-bold text-[#0075de]">
+                      <span className="font-mono font-bold text-[#2B8A60]">
                         {formatRupiah(allocationPreview.totalTabungan)}
                       </span>
                     </div>
-                    <div className="flex justify-between text-[#757575]">
+                    <div className="flex justify-between text-[#626262]">
                       <span>Total Masuk Operasional:</span>
-                      <span className="font-mono font-bold text-[#111111]">
+                      <span className="font-mono font-bold text-[#202119]">
                         {formatRupiah(allocationPreview.totalOperasional)}
                       </span>
                     </div>
@@ -552,31 +552,31 @@ export function CashDeskClient({
       {/* 80mm Thermal Receipt Dialog */}
       {completedReceipt && (
         <Dialog open={!!completedReceipt} onOpenChange={() => setCompletedReceipt(null)}>
-          <DialogContent className="max-w-md w-full p-6 sm:rounded-[12px] bg-white text-[#111111] shadow-none border border-[rgba(0,0,0,0.08)]">
-            <DialogHeader className="text-center pb-2 border-b border-dashed border-[rgba(0,0,0,0.08)]">
-              <div className="font-bold text-base font-heading">PONDOK PESANTREN</div>
-              <div className="text-[11px] text-[#757575]">Kuitansi Bukti Pembayaran Kas</div>
-              <div className="font-mono text-xs font-semibold text-[#111111] mt-1">
+          <DialogContent className="max-w-md w-full p-6 sm:rounded-[18px] bg-white text-[#202119] shadow-none border border-[#E8E8E8]">
+            <DialogHeader className="text-center pb-2 border-b border-dashed border-[#E8E8E8]">
+              <div className="font-bold text-base font-sans text-[#202119]">PONDOK PESANTREN</div>
+              <div className="text-[11px] text-[#626262]">Kuitansi Bukti Pembayaran Kas</div>
+              <div className="font-mono text-xs font-semibold text-[#202119] mt-1">
                 {completedReceipt.nomorKuitansi}
               </div>
             </DialogHeader>
 
             <div className="space-y-3 py-3 text-xs font-mono">
               <div className="flex justify-between">
-                <span className="text-[#757575]">Tanggal:</span>
+                <span className="text-[#626262]">Tanggal:</span>
                 <span>{formatDateIndo(completedReceipt.tanggalBayar)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#757575]">Santri:</span>
+                <span className="text-[#626262]">Santri:</span>
                 <span className="font-bold">{completedReceipt.santri.nama}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#757575]">NIS / Komplek:</span>
+                <span className="text-[#626262]">NIS / Komplek:</span>
                 <span>{completedReceipt.santri.nis} • {completedReceipt.santri.komplekKode}</span>
               </div>
 
-              <div className="py-2 border-y border-dashed border-[rgba(0,0,0,0.08)] space-y-1.5">
-                <div className="text-[10px] text-[#757575] uppercase">Rincian Alokasi:</div>
+              <div className="py-2 border-y border-dashed border-[#E8E8E8] space-y-1.5">
+                <div className="text-[10px] text-[#626262] uppercase">Rincian Alokasi:</div>
                 {completedReceipt.alokasiRincian.map((r: any, idx: number) => (
                   <div key={idx} className="flex justify-between text-[11px]">
                     <span className="truncate pr-2">{r.judul}</span>
@@ -588,32 +588,32 @@ export function CashDeskClient({
               <div className="space-y-1 pt-1">
                 <div className="flex justify-between text-sm font-bold">
                   <span>TOTAL BAYAR:</span>
-                  <span className="text-[#0075de]">{formatRupiah(completedReceipt.nominalTotal)}</span>
+                  <span className="text-[#202119]">{formatRupiah(completedReceipt.nominalTotal)}</span>
                 </div>
-                <div className="flex justify-between text-[11px] text-[#757575]">
+                <div className="flex justify-between text-[11px] text-[#626262]">
                   <span>Masuk Tabungan:</span>
                   <span>{formatRupiah(completedReceipt.totalAlokasiTabungan)}</span>
                 </div>
-                <div className="flex justify-between text-[11px] text-[#757575]">
+                <div className="flex justify-between text-[11px] text-[#626262]">
                   <span>Masuk Operasional:</span>
                   <span>{formatRupiah(completedReceipt.totalAlokasiOperasional)}</span>
                 </div>
-                <div className="flex justify-between text-[11px] text-[#b47800] font-semibold pt-1">
+                <div className="flex justify-between text-[11px] text-[#C84C5A] font-semibold pt-1">
                   <span>Sisa Tunggakan:</span>
                   <span>{formatRupiah(completedReceipt.sisaTunggakanSetelahBayar)}</span>
                 </div>
               </div>
 
-              <div className="pt-2 text-center text-[10px] text-[#757575]">
+              <div className="pt-2 text-center text-[10px] text-[#626262]">
                 Petugas: {completedReceipt.petugasNama}<br />
                 Simpan kuitansi ini sebagai bukti pembayaran sah.
               </div>
             </div>
 
-            <div className="flex flex-col gap-2 pt-2 border-t border-[rgba(0,0,0,0.08)]">
+            <div className="flex flex-col gap-2 pt-2 border-t border-[#E8E8E8]">
               <Button
                 onClick={handlePrint}
-                className="w-full bg-[#0075de] hover:bg-[#0060b8] text-white text-xs h-10 gap-2 cursor-pointer rounded-[8px] shadow-none"
+                className="w-full bg-[#202119] hover:bg-[#2e2f26] text-white text-xs h-10 gap-2 cursor-pointer rounded-[8px] shadow-none focus-visible:ring-[#315FC4]"
               >
                 <Printer className="h-4 w-4" />
                 <span>Cetak Kuitansi (Thermal 80mm)</span>
@@ -626,9 +626,9 @@ export function CashDeskClient({
               >
                 <Button
                   variant="outline"
-                  className="w-full text-xs h-10 gap-2 border-[rgba(0,117,222,0.2)] text-[#0075de] hover:bg-[#e6f3fe] cursor-pointer rounded-[8px] shadow-none"
+                  className="w-full text-xs h-10 gap-2 border border-[#E8E8E8] text-[#202119] hover:bg-[#F5F5F5] cursor-pointer rounded-[8px] shadow-none"
                 >
-                  <Share2 className="h-4 w-4 text-[#0075de]" />
+                  <Share2 className="h-4 w-4 text-[#202119]" />
                   <span>Kirim Kuitansi ke WhatsApp</span>
                 </Button>
               </a>
@@ -640,7 +640,7 @@ export function CashDeskClient({
                   setNominalInput('');
                   setNominal(0);
                 }}
-                className="text-xs text-[#757575] hover:bg-[rgba(55,53,47,0.06)] rounded-[8px]"
+                className="text-xs text-[#626262] hover:bg-[#F5F5F5] rounded-[8px]"
               >
                 Tutup & Transaksi Berikutnya
               </Button>

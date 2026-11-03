@@ -3,26 +3,28 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#0075de] focus:ring-offset-2 shadow-none",
+  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#315FC4] focus:ring-offset-2 shadow-none",
   {
     variants: {
       variant: {
         default:
-          "border-transparent bg-[#0075de] text-white shadow-none hover:bg-[#0060b8]",
+          "border-transparent bg-[#202119] text-white shadow-none hover:bg-[#2e2f26]",
         secondary:
-          "border-[#bfe0fd] bg-[#e6f3fe] text-[#097fe8] hover:bg-[#d5ebfd]",
+          "border-[#E8E8E8] bg-[#F5F5F5] text-[#626262] hover:bg-[#EAEAEA]",
         success:
-          "border-[rgba(43,110,79,0.2)] bg-[#ebf5ee] text-[#2b6e4f] hover:bg-[#dff0e4]",
+          "border-[rgba(43,138,96,0.2)] bg-[#EAF7EF] text-[#2B8A60] hover:bg-[#ddf2e4]",
         warning:
-          "border-[#fde2a7] bg-[#fff6e5] text-[#b47800] hover:bg-[#ffeed0]",
+          "border-[rgba(194,65,12,0.2)] bg-[#FFF7ED] text-[#C2410C] hover:bg-[#ffedd5]",
         destructive:
-          "border-[#f9c5c0] bg-[#fdeeed] text-[#e32d14] hover:bg-[#fbdcd9]",
+          "border-[rgba(200,76,90,0.2)] bg-[#FCEDEF] text-[#C84C5A] hover:bg-[#f8dada]",
         outline:
-          "border-[rgba(0,0,0,0.1)] bg-white text-[#5a5a58] hover:bg-[#f6f5f4]",
+          "border-[#E8E8E8] bg-white text-[#626262] hover:bg-[#F5F5F5]",
         slate:
-          "border-[rgba(90,90,88,0.2)] bg-[#f1f1ef] text-[#5a5a58] hover:bg-[#e8e8e6]",
+          "border-[#E8E8E8] bg-[#F5F5F5] text-[#626262] hover:bg-[#EAEAEA]",
         sky:
-          "border-[#bfe0fd] bg-[#e6f3fe] text-[#097fe8] hover:bg-[#d5ebfd]",
+          "border-[rgba(49,95,196,0.2)] bg-[#EDF2FB] text-[#315FC4] hover:bg-[#dce6f7]",
+        orange:
+          "border-[rgba(244,81,42,0.2)] bg-[#FFF0ED] text-[#F4512A] hover:bg-[#ffe5df]",
       },
     },
     defaultVariants: {

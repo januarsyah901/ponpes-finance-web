@@ -166,7 +166,7 @@ export function BendaharaReportsClient({
         ['Total Saldo Tabungan Seluruh Santri', report.totalKewajibanTabungan.toLocaleString('id-ID'), 'Kewajiban saldo di pondok'],
       ],
       theme: 'grid',
-      headStyles: { fillColor: [15, 81, 50] },
+      headStyles: { fillColor: [32, 33, 25] },
     });
 
     // Tabel Rincian Pengeluaran per Kategori
@@ -184,7 +184,7 @@ export function BendaharaReportsClient({
         `${b.persentase}%`
       ]),
       theme: 'striped',
-      headStyles: { fillColor: [100, 116, 139] },
+      headStyles: { fillColor: [98, 98, 98] },
     });
 
     doc.save(`Laporan_Keuangan_Ponpes_${startDate}_sd_${endDate}.pdf`);
@@ -214,25 +214,25 @@ export function BendaharaReportsClient({
       {/* Header & Export Actions */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#111111] tracking-tight">Laporan Keuangan</h1>
-          <p className="text-sm text-[#757575]">Rekap pemasukan, pengeluaran, alokasi tabungan, dan ekspor resmi</p>
+          <h1 className="text-2xl font-bold text-[#202119] tracking-tight">Laporan Keuangan</h1>
+          <p className="text-sm text-[#626262]">Rekap pemasukan, pengeluaran, alokasi tabungan, dan ekspor resmi</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={handleShareWa}
-            className="px-3.5 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-xs sm:text-sm font-semibold text-[#111111] hover:bg-[#f6f5f4] transition flex items-center gap-1.5 bg-white shadow-none"
+            className="px-3.5 py-2 border border-[#E8E8E8] rounded-[8px] text-xs sm:text-sm font-semibold text-[#202119] hover:bg-[#F5F5F5] transition flex items-center gap-1.5 bg-white shadow-none"
           >
             <span>📱 Bagikan ke WA</span>
           </button>
           <button
             onClick={handleExportExcel}
-            className="px-3.5 py-2 border border-[rgba(0,117,222,0.2)] bg-[#e6f3fe] hover:bg-[#e6f3fe]/80 text-[#0075de] rounded-[8px] text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 shadow-none"
+            className="px-3.5 py-2 border border-[#E8E8E8] bg-[#F5F5F5] hover:bg-[#EAEAEA] text-[#202119] rounded-[8px] text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 shadow-none"
           >
             <span>📊 Export Excel</span>
           </button>
           <button
             onClick={handleExportPdf}
-            className="px-3.5 py-2 bg-[#0075de] hover:bg-[#0060b8] text-white rounded-[8px] text-xs sm:text-sm font-semibold shadow-none transition flex items-center gap-1.5"
+            className="px-3.5 py-2 bg-[#202119] hover:bg-[#2e2f26] text-white rounded-[8px] text-xs sm:text-sm font-semibold shadow-none transition flex items-center gap-1.5"
           >
             <span>📄 Export PDF</span>
           </button>
@@ -240,31 +240,31 @@ export function BendaharaReportsClient({
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-4 shadow-none flex flex-wrap gap-4 items-end">
+      <div className="bg-white border border-[#E8E8E8] rounded-[18px] p-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)] flex flex-wrap gap-4 items-end">
         <div>
-          <label className="text-xs text-[#757575] block mb-1 font-semibold">Tanggal Mulai</label>
+          <label className="text-xs text-[#626262] block mb-1 font-semibold">Tanggal Mulai</label>
           <input
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="px-3 py-1.5 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white text-[#111111] shadow-none"
+            className="px-3 py-1.5 border border-[#E8E8E8] rounded-[8px] text-sm bg-white text-[#202119] focus:outline-none focus:ring-1 focus:ring-[#315FC4] shadow-none"
           />
         </div>
         <div>
-          <label className="text-xs text-[#757575] block mb-1 font-semibold">Tanggal Akhir</label>
+          <label className="text-xs text-[#626262] block mb-1 font-semibold">Tanggal Akhir</label>
           <input
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="px-3 py-1.5 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white text-[#111111] shadow-none"
+            className="px-3 py-1.5 border border-[#E8E8E8] rounded-[8px] text-sm bg-white text-[#202119] focus:outline-none focus:ring-1 focus:ring-[#315FC4] shadow-none"
           />
         </div>
         <div>
-          <label className="text-xs text-[#757575] block mb-1 font-semibold">Komplek</label>
+          <label className="text-xs text-[#626262] block mb-1 font-semibold">Komplek</label>
           <select
             value={selectedKomplek}
             onChange={(e) => setSelectedKomplek(e.target.value)}
-            className="px-3 py-1.5 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white text-[#111111] shadow-none"
+            className="px-3 py-1.5 border border-[#E8E8E8] rounded-[8px] text-sm bg-white text-[#202119] focus:outline-none focus:ring-1 focus:ring-[#315FC4] shadow-none"
           >
             <option value="all">Semua Komplek</option>
             {complexList.map((c) => (
@@ -277,20 +277,20 @@ export function BendaharaReportsClient({
         <button
           onClick={handleApplyFilter}
           disabled={loading}
-          className="px-4 py-2 bg-[#0075de] text-white rounded-[8px] text-sm font-semibold hover:bg-[#0060b8] transition disabled:opacity-50 shadow-none"
+          className="px-4 py-2 bg-[#202119] text-white rounded-[8px] text-sm font-semibold hover:bg-[#2e2f26] transition disabled:opacity-50 shadow-none"
         >
           {loading ? 'Memuat...' : 'Terapkan Filter'}
         </button>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-[rgba(0,0,0,0.08)] gap-4">
+      <div className="flex border-b border-[#E8E8E8] gap-4">
         <button
           onClick={() => setActiveTab('ringkasan')}
           className={`pb-3 text-sm font-bold border-b-2 transition ${
             activeTab === 'ringkasan'
-              ? 'border-[#0075de] text-[#0075de]'
-              : 'border-transparent text-[#757575] hover:text-[#111111]'
+              ? 'border-[#202119] text-[#202119]'
+              : 'border-transparent text-[#626262] hover:text-[#202119]'
           }`}
         >
           Ringkasan Arus Kas &amp; Alokasi
@@ -299,8 +299,8 @@ export function BendaharaReportsClient({
           onClick={() => setActiveTab('tabungan')}
           className={`pb-3 text-sm font-bold border-b-2 transition ${
             activeTab === 'tabungan'
-              ? 'border-[#0075de] text-[#0075de]'
-              : 'border-transparent text-[#757575] hover:text-[#111111]'
+              ? 'border-[#202119] text-[#202119]'
+              : 'border-transparent text-[#626262] hover:text-[#202119]'
           }`}
         >
           Rekap Saldo Tabungan Santri ({savingsList.length})
@@ -312,72 +312,72 @@ export function BendaharaReportsClient({
         <div className="space-y-6">
           {/* KPI Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-5 shadow-none">
-              <p className="text-xs font-semibold text-[#757575] uppercase tracking-wider">Total Pemasukan</p>
-              <p className="text-2xl font-bold text-[#111111] mt-1 font-mono">
+            <div className="bg-white border border-[#E8E8E8] rounded-[18px] p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+              <p className="text-xs font-semibold text-[#626262] uppercase tracking-wider">Total Pemasukan</p>
+              <p className="text-2xl font-bold text-[#202119] mt-1 font-sans tabular-nums lining-nums">
                 <CurrencyDisplay amount={report.pemasukan.totalPemasukan} />
               </p>
-              <div className="text-xs text-[#757575] mt-2 space-y-0.5 border-t border-[rgba(0,0,0,0.08)] pt-2">
+              <div className="text-xs text-[#626262] mt-2 space-y-0.5 border-t border-[#E8E8E8] pt-2">
                 <div className="flex justify-between">
                   <span>Operasional:</span>
-                  <span className="font-mono font-medium">Rp {report.pemasukan.alokasiOperasional.toLocaleString('id-ID')}</span>
+                  <span className="font-sans tabular-nums lining-nums font-medium">Rp {report.pemasukan.alokasiOperasional.toLocaleString('id-ID')}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Tabungan:</span>
-                  <span className="font-mono font-medium">Rp {report.pemasukan.alokasiTabungan.toLocaleString('id-ID')}</span>
+                  <span className="font-sans tabular-nums lining-nums font-medium">Rp {report.pemasukan.alokasiTabungan.toLocaleString('id-ID')}</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-5 shadow-none">
-              <p className="text-xs font-semibold text-[#757575] uppercase tracking-wider">Total Pengeluaran</p>
-              <p className="text-2xl font-bold text-[#e32d14] mt-1 font-mono">
+            <div className="bg-white border border-[#E8E8E8] rounded-[18px] p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+              <p className="text-xs font-semibold text-[#626262] uppercase tracking-wider">Total Pengeluaran</p>
+              <p className="text-2xl font-bold text-[#C84C5A] mt-1 font-sans tabular-nums lining-nums">
                 <CurrencyDisplay amount={report.pengeluaran.totalPengeluaran} />
               </p>
-              <p className="text-xs text-[#757575] mt-2 border-t border-[rgba(0,0,0,0.08)] pt-2">
+              <p className="text-xs text-[#626262] mt-2 border-t border-[#E8E8E8] pt-2">
                 Realisasi belanja operasional
               </p>
             </div>
 
-            <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-5 shadow-none">
-              <p className="text-xs font-semibold text-[#757575] uppercase tracking-wider">Surplus / Defisit Operasional</p>
-              <p className={`text-2xl font-bold mt-1 font-mono ${report.surplusDefisitOperasional >= 0 ? 'text-[#0075de]' : 'text-[#e32d14]'}`}>
+            <div className="bg-white border border-[#E8E8E8] rounded-[18px] p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+              <p className="text-xs font-semibold text-[#626262] uppercase tracking-wider">Surplus / Defisit Operasional</p>
+              <p className={`text-2xl font-bold mt-1 font-sans tabular-nums lining-nums ${report.surplusDefisitOperasional >= 0 ? 'text-[#2B8A60]' : 'text-[#C84C5A]'}`}>
                 <CurrencyDisplay amount={report.surplusDefisitOperasional} showSign />
               </p>
-              <p className="text-xs text-[#757575] mt-2 border-t border-[rgba(0,0,0,0.08)] pt-2">
+              <p className="text-xs text-[#626262] mt-2 border-t border-[#E8E8E8] pt-2">
                 Alokasi operasional - pengeluaran
               </p>
             </div>
 
-            <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-5 shadow-none">
-              <p className="text-xs font-semibold text-[#757575] uppercase tracking-wider">Kewajiban Tabungan Santri</p>
-              <p className="text-2xl font-bold text-[#b47800] mt-1 font-mono">
+            <div className="bg-white border border-[#E8E8E8] rounded-[18px] p-5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+              <p className="text-xs font-semibold text-[#626262] uppercase tracking-wider">Kewajiban Tabungan Santri</p>
+              <p className="text-2xl font-bold text-[#202119] mt-1 font-sans tabular-nums lining-nums">
                 <CurrencyDisplay amount={report.totalKewajibanTabungan} />
               </p>
-              <p className="text-xs text-[#757575] mt-2 border-t border-[rgba(0,0,0,0.08)] pt-2">
+              <p className="text-xs text-[#626262] mt-2 border-t border-[#E8E8E8] pt-2">
                 Total saldo tabungan seluruh santri
               </p>
             </div>
           </div>
 
           {/* Breakdown Pengeluaran */}
-          <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-6 shadow-none">
-            <h3 className="text-base font-bold text-[#111111] mb-4">Breakdown Pengeluaran per Kategori</h3>
+          <div className="bg-white border border-[#E8E8E8] rounded-[18px] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+            <h3 className="text-base font-bold text-[#202119] mb-4">Breakdown Pengeluaran per Kategori</h3>
             {report.pengeluaran.breakdownPerKategori.length === 0 ? (
-              <p className="text-sm text-[#757575] py-4">Belum ada pengeluaran pada periode ini</p>
+              <p className="text-sm text-[#626262] py-4">Belum ada pengeluaran pada periode ini</p>
             ) : (
               <div className="space-y-4">
                 {report.pengeluaran.breakdownPerKategori.map((b) => (
                   <div key={b.kategoriId}>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="font-medium text-[#111111]">{b.namaKategori}</span>
-                      <span className="font-mono font-semibold text-[#111111]">
+                      <span className="font-medium text-[#202119]">{b.namaKategori}</span>
+                      <span className="font-sans tabular-nums lining-nums font-semibold text-[#202119]">
                         Rp {b.nominal.toLocaleString('id-ID')} ({b.persentase}%)
                       </span>
                     </div>
-                    <div className="w-full bg-[#f6f5f4] h-2.5 rounded-full overflow-hidden">
+                    <div className="w-full bg-[#F5F5F5] h-2.5 rounded-full overflow-hidden">
                       <div
-                        className="bg-[#0075de] h-2.5 rounded-full"
+                        className="bg-[#F4512A] h-2.5 rounded-full"
                         style={{ width: `${Math.min(b.persentase, 100)}%` }}
                       />
                     </div>
@@ -391,11 +391,11 @@ export function BendaharaReportsClient({
 
       {/* Content Tab 2: Rekap Saldo Tabungan */}
       {activeTab === 'tabungan' && (
-        <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] shadow-none overflow-hidden">
+        <div className="bg-white border border-[#E8E8E8] rounded-[18px] shadow-[0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-sm">
               <thead>
-                <tr className="bg-[#f6f5f4] border-b border-[rgba(0,0,0,0.08)] text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">
+                <tr className="bg-[#F5F5F5] border-b border-[#E8E8E8] text-[#626262] text-xs font-medium uppercase tracking-wider">
                   <th className="px-5 py-3.5">NIS</th>
                   <th className="px-5 py-3.5">Nama Santri</th>
                   <th className="px-5 py-3.5">Komplek</th>
@@ -404,21 +404,21 @@ export function BendaharaReportsClient({
                   <th className="px-5 py-3.5 text-right">Saldo Tabungan</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[rgba(0,0,0,0.08)]">
+              <tbody className="divide-y divide-[#E8E8E8]">
                 {savingsList.map((s) => (
-                  <tr key={s.santriId} className="hover:bg-[#f6f5f4]/80 transition">
-                    <td className="px-5 py-3.5 font-mono text-[#111111]">{s.nis}</td>
-                    <td className="px-5 py-3.5 font-medium text-[#111111]">{s.nama}</td>
-                    <td className="px-5 py-3.5 text-[#757575]">{s.komplek}</td>
-                    <td className="px-5 py-3.5 text-[#757575]">{s.kategori}</td>
+                  <tr key={s.santriId} className="hover:bg-[#F5F5F5] transition">
+                    <td className="px-5 py-3.5 font-mono text-[#202119]">{s.nis}</td>
+                    <td className="px-5 py-3.5 font-medium text-[#202119]">{s.nama}</td>
+                    <td className="px-5 py-3.5 text-[#626262]">{s.komplek}</td>
+                    <td className="px-5 py-3.5 text-[#626262]">{s.kategori}</td>
                     <td className="px-5 py-3.5">
                       <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
-                        s.status === 'aktif' ? 'bg-[#ebf5ee] text-[#2b6e4f]' : 'bg-[#f6f5f4] text-[#757575]'
+                        s.status === 'aktif' ? 'bg-[#EAF7EF] text-[#2B8A60] border border-[rgba(43,138,96,0.2)]' : 'bg-[#F5F5F5] text-[#747474] border border-[#E8E8E8]'
                       }`}>
                         {s.status}
                       </span>
                     </td>
-                    <td className="px-5 py-3.5 text-right font-mono font-semibold text-[#111111]">
+                    <td className="px-5 py-3.5 text-right font-sans tabular-nums lining-nums font-semibold text-[#202119]">
                       <CurrencyDisplay amount={s.saldoTabungan} />
                     </td>
                   </tr>

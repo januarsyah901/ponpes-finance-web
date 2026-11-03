@@ -162,37 +162,37 @@ export function PaymentFormClient({
   // State C: Success Receipt Confirmation
   if (successReceipt) {
     return (
-      <div className="bg-white rounded-[12px] border border-[rgba(0,0,0,0.08)] p-6 shadow-none text-center space-y-5">
-        <div className="h-16 w-16 bg-[#ebf5ee] rounded-full flex items-center justify-center mx-auto text-[#2b6e4f]">
-          <CheckCircle className="h-10 w-10 text-[#2b6e4f]" />
+      <div className="bg-white rounded-[18px] border border-[#E8E8E8] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.04)] text-center space-y-5">
+        <div className="h-16 w-16 bg-[#EAF7EF] rounded-full flex items-center justify-center mx-auto text-[#2B8A60]">
+          <CheckCircle className="h-10 w-10 text-[#2B8A60]" />
         </div>
 
         <div>
-          <h2 className="text-xl font-bold font-heading text-[#111111]">
+          <h2 className="text-xl font-bold font-heading text-[#202119]">
             Bukti Transfer Berhasil Dikirim!
           </h2>
-          <p className="text-xs text-[#757575] mt-1 max-w-md mx-auto">
+          <p className="text-xs text-[#626262] mt-1 max-w-md mx-auto">
             Pembayaran Anda telah masuk ke antrean verifikasi bendahara komplek. Mohon menunggu proses verifikasi.
           </p>
         </div>
 
         {/* Receipt Card */}
-        <div className="bg-[#f6f5f4] rounded-[8px] p-4 border border-[rgba(0,0,0,0.08)] text-left space-y-2 text-xs">
-          <div className="flex justify-between py-1 border-b border-[rgba(0,0,0,0.08)]">
-            <span className="text-[#757575]">Santri:</span>
-            <span className="font-semibold text-[#111111]">{profile.nama} ({profile.nis})</span>
+        <div className="bg-[#F5F5F5] rounded-[18px] p-4 border border-[#E8E8E8] text-left space-y-2 text-xs">
+          <div className="flex justify-between py-1 border-b border-[#E8E8E8]">
+            <span className="text-[#747474]">Santri:</span>
+            <span className="font-semibold text-[#202119]">{profile.nama} ({profile.nis})</span>
           </div>
-          <div className="flex justify-between py-1 border-b border-[rgba(0,0,0,0.08)]">
-            <span className="text-[#757575]">Tanggal Bayar:</span>
-            <span className="font-medium text-[#111111]">{formatDateIndo(successReceipt.tanggalBayar)}</span>
+          <div className="flex justify-between py-1 border-b border-[#E8E8E8]">
+            <span className="text-[#747474]">Tanggal Bayar:</span>
+            <span className="font-medium text-[#202119]">{formatDateIndo(successReceipt.tanggalBayar)}</span>
           </div>
-          <div className="flex justify-between py-1 border-b border-[rgba(0,0,0,0.08)]">
-            <span className="text-[#757575]">Nominal:</span>
-            <CurrencyDisplay amount={successReceipt.nominal} className="font-bold text-[#0075de]" />
+          <div className="flex justify-between py-1 border-b border-[#E8E8E8]">
+            <span className="text-[#747474]">Nominal:</span>
+            <CurrencyDisplay amount={successReceipt.nominal} className="font-bold text-[#202119]" />
           </div>
           <div className="flex justify-between py-1">
-            <span className="text-[#757575]">Status:</span>
-            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#fff6e5] text-[#b47800] border border-[#fde2a7]">
+            <span className="text-[#747474]">Status:</span>
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#FFF7ED] text-[#C2410C] border border-[rgba(194,65,12,0.2)]">
               Menunggu Verifikasi
             </span>
           </div>
@@ -205,7 +205,7 @@ export function PaymentFormClient({
             </Button>
           </Link>
           <Link href="/santri" className="flex-1">
-            <Button className="w-full bg-[#0075de] hover:bg-[#0060b8] text-white rounded-[8px]">
+            <Button className="w-full bg-[#202119] hover:bg-[#2e2f26] text-white rounded-[8px]">
               Lihat Tagihan
             </Button>
           </Link>
@@ -218,77 +218,77 @@ export function PaymentFormClient({
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold font-heading text-[#111111]">
+        <h1 className="text-2xl font-bold font-heading text-[#202119]">
           Konfirmasi Pembayaran
         </h1>
-        <p className="text-xs text-[#757575] mt-1">
+        <p className="text-xs text-[#747474] mt-1">
           Kirim bukti transfer bank untuk verifikasi tagihan syahriah & kegiatan santri
         </p>
       </div>
 
       {/* Rejection Alert Banner (if applicable) */}
       {lastRejected && (
-        <div className="p-4 rounded-[8px] bg-[#fdeeed] border border-[rgba(227,45,20,0.2)] text-[#e32d14] space-y-2">
-          <div className="flex items-center gap-2 font-semibold text-xs text-[#e32d14]">
+        <div className="p-4 rounded-[18px] bg-[#FCEDEF] border border-[rgba(200,76,90,0.2)] text-[#C84C5A] space-y-2">
+          <div className="flex items-center gap-2 font-semibold text-xs text-[#C84C5A]">
             <AlertTriangle className="h-4 w-4 shrink-0" />
             <span>Pembayaran Terakhir Anda Ditolak</span>
           </div>
-          <p className="text-xs text-[#e32d14]">
+          <p className="text-xs text-[#C84C5A]">
             <strong>Alasan Bendahara:</strong> &ldquo;{lastRejected.alasanPenolakan}&rdquo;
           </p>
-          <p className="text-[11px] text-[#e32d14]">
+          <p className="text-[11px] text-[#C84C5A]">
             Silakan periksa kembali mutasi bank dan unggah foto bukti transfer yang jelas dan terbaca.
           </p>
         </div>
       )}
 
       {/* Bank Account Information Cards */}
-      <Card className="rounded-[12px] border border-[rgba(0,0,0,0.08)] bg-white shadow-none">
+      <Card className="rounded-[18px] border border-[#E8E8E8] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
         <CardHeader className="pb-3">
-          <CardTitle className="text-xs font-semibold text-[rgba(0,0,0,0.6)] uppercase tracking-wider flex items-center gap-2">
-            <Building2 className="h-4 w-4 text-[#0075de]" />
+          <CardTitle className="text-xs font-semibold text-[#626262] uppercase tracking-wider flex items-center gap-2">
+            <Building2 className="h-4 w-4 text-[#F4512A]" />
             <span>Rekening Resmi Pondok Pesantren</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {/* BSI */}
-          <div className="p-3 rounded-[8px] border border-[rgba(0,0,0,0.08)] bg-[#f6f5f4] flex items-center justify-between">
+          <div className="p-3 rounded-[8px] border border-[#E8E8E8] bg-[#F5F5F5] flex items-center justify-between">
             <div>
-              <div className="text-[11px] font-semibold text-[#0075de]">Bank Syariah Indonesia (BSI)</div>
-              <div className="font-mono text-sm font-bold text-[#111111] mt-0.5">7123456789</div>
-              <div className="text-[10px] text-[#757575]">a.n. Pondok Pesantren</div>
+              <div className="text-[11px] font-semibold text-[#202119]">Bank Syariah Indonesia (BSI)</div>
+              <div className="font-sans tabular-nums lining-nums text-sm font-bold text-[#202119] mt-0.5">7123456789</div>
+              <div className="text-[10px] text-[#747474]">a.n. Pondok Pesantren</div>
             </div>
             <button
               type="button"
               onClick={() => copyToClipboard('7123456789', 'BSI')}
-              className="p-2 rounded-[6px] bg-white border border-[rgba(0,0,0,0.12)] hover:bg-[#f6f5f4] transition-colors cursor-pointer"
+              className="p-2 rounded-[6px] bg-white border border-[#E8E8E8] hover:bg-[#EAEAEA] transition-colors cursor-pointer"
               title="Salin Nomor Rekening"
             >
               {copiedBank === 'BSI' ? (
-                <Check className="h-4 w-4 text-[#2b6e4f]" />
+                <Check className="h-4 w-4 text-[#2B8A60]" />
               ) : (
-                <Copy className="h-4 w-4 text-[#757575]" />
+                <Copy className="h-4 w-4 text-[#747474]" />
               )}
             </button>
           </div>
 
           {/* BCA */}
-          <div className="p-3 rounded-[8px] border border-[rgba(0,0,0,0.08)] bg-[#f6f5f4] flex items-center justify-between">
+          <div className="p-3 rounded-[8px] border border-[#E8E8E8] bg-[#F5F5F5] flex items-center justify-between">
             <div>
-              <div className="text-[11px] font-semibold text-[#0075de]">Bank BCA</div>
-              <div className="font-mono text-sm font-bold text-[#111111] mt-0.5">8901234567</div>
-              <div className="text-[10px] text-[#757575]">a.n. Yayasan Pondok Pesantren</div>
+              <div className="text-[11px] font-semibold text-[#202119]">Bank BCA</div>
+              <div className="font-sans tabular-nums lining-nums text-sm font-bold text-[#202119] mt-0.5">8901234567</div>
+              <div className="text-[10px] text-[#747474]">a.n. Yayasan Pondok Pesantren</div>
             </div>
             <button
               type="button"
               onClick={() => copyToClipboard('8901234567', 'BCA')}
-              className="p-2 rounded-[6px] bg-white border border-[rgba(0,0,0,0.12)] hover:bg-[#f6f5f4] transition-colors cursor-pointer"
+              className="p-2 rounded-[6px] bg-white border border-[#E8E8E8] hover:bg-[#EAEAEA] transition-colors cursor-pointer"
               title="Salin Nomor Rekening"
             >
               {copiedBank === 'BCA' ? (
-                <Check className="h-4 w-4 text-[#2b6e4f]" />
+                <Check className="h-4 w-4 text-[#2B8A60]" />
               ) : (
-                <Copy className="h-4 w-4 text-[#757575]" />
+                <Copy className="h-4 w-4 text-[#747474]" />
               )}
             </button>
           </div>
@@ -296,11 +296,11 @@ export function PaymentFormClient({
       </Card>
 
       {/* Bill Selection & Outstanding Notice */}
-      <Card className="rounded-[12px] border border-[rgba(0,0,0,0.08)] bg-white shadow-none">
+      <Card className="rounded-[18px] border border-[#E8E8E8] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
         <CardHeader className="pb-3">
-          <CardTitle className="text-xs font-semibold text-[rgba(0,0,0,0.6)] uppercase tracking-wider flex items-center justify-between">
+          <CardTitle className="text-xs font-semibold text-[#626262] uppercase tracking-wider flex items-center justify-between">
             <span>Pilih Target Tagihan</span>
-            <span className="text-[11px] font-normal normal-case text-[#0075de]">
+            <span className="text-[11px] font-normal normal-case text-[#202119]">
               Total Tunggakan: <CurrencyDisplay amount={totalOutstanding} />
             </span>
           </CardTitle>
@@ -309,8 +309,8 @@ export function PaymentFormClient({
           {/* Default FIFO Option */}
           <label className={`flex items-start gap-3 p-3 rounded-[8px] border cursor-pointer transition-colors ${
             selectedBillId === 'auto'
-              ? 'border-[#0075de] bg-[#e6f3fe]/40'
-              : 'border-[rgba(0,0,0,0.08)] hover:bg-[#f6f5f4]'
+              ? 'border-[#202119] bg-[#F5F5F5]'
+              : 'border-[#E8E8E8] hover:bg-[#F5F5F5]'
           }`}>
             <input
               type="radio"
@@ -318,14 +318,14 @@ export function PaymentFormClient({
               value="auto"
               checked={selectedBillId === 'auto'}
               onChange={() => setSelectedBillId('auto')}
-              className="mt-1 accent-[#0075de]"
+              className="mt-1 accent-[#202119]"
             />
             <div className="flex-1 text-xs">
-              <div className="font-semibold text-[#111111] flex items-center gap-1.5">
+              <div className="font-semibold text-[#202119] flex items-center gap-1.5">
                 <span>Alokasi Otomatis (Rekomendasi)</span>
-                <Sparkles className="h-3.5 w-3.5 text-[#0075de]" />
+                <Sparkles className="h-3.5 w-3.5 text-[#F4512A]" />
               </div>
-              <p className="text-[#757575] mt-0.5">
+              <p className="text-[#747474] mt-0.5">
                 Pembayaran dialokasikan otomatis ke tagihan bulan terlama terlebih dahulu (FIFO).
               </p>
             </div>
@@ -337,8 +337,8 @@ export function PaymentFormClient({
               key={bill.id}
               className={`flex items-start gap-3 p-3 rounded-[8px] border cursor-pointer transition-colors ${
                 selectedBillId === bill.id
-                  ? 'border-[#0075de] bg-[#e6f3fe]/40'
-                  : 'border-[rgba(0,0,0,0.08)] hover:bg-[#f6f5f4]'
+                  ? 'border-[#202119] bg-[#F5F5F5]'
+                  : 'border-[#E8E8E8] hover:bg-[#F5F5F5]'
               }`}
             >
               <input
@@ -350,16 +350,16 @@ export function PaymentFormClient({
                   setSelectedBillId(bill.id);
                   handleQuickNominal(bill.sisa);
                 }}
-                className="mt-1 accent-[#0075de]"
+                className="mt-1 accent-[#202119]"
               />
               <div className="flex-1 flex items-center justify-between text-xs">
                 <div>
-                  <div className="font-semibold text-[#111111]">{bill.judul}</div>
-                  <div className="text-[11px] text-[#757575]">Jatuh tempo: {formatDateIndo(bill.jatuhTempo)}</div>
+                  <div className="font-semibold text-[#202119]">{bill.judul}</div>
+                  <div className="text-[11px] text-[#747474]">Jatuh tempo: {formatDateIndo(bill.jatuhTempo)}</div>
                 </div>
                 <div className="text-right">
-                  <CurrencyDisplay amount={bill.sisa} className="font-bold text-[#111111]" />
-                  <div className="text-[10px] text-[#b47800] font-medium">Sisa Tagihan</div>
+                  <CurrencyDisplay amount={bill.sisa} className="font-bold text-[#202119]" />
+                  <div className="text-[10px] text-[#C2410C] font-medium">Sisa Tagihan</div>
                 </div>
               </div>
             </label>
@@ -368,14 +368,14 @@ export function PaymentFormClient({
       </Card>
 
       {/* Nominal Input & Quick Buttons */}
-      <Card className="rounded-[12px] border border-[rgba(0,0,0,0.08)] bg-white shadow-none">
+      <Card className="rounded-[18px] border border-[#E8E8E8] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
         <CardContent className="pt-6 space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="nominal" className="text-xs font-semibold text-[#111111]">
-              Nominal yang Ditransfer (Rp) <span className="text-[#e32d14]">*</span>
+            <Label htmlFor="nominal" className="text-xs font-semibold text-[#202119]">
+              Nominal yang Ditransfer (Rp) <span className="text-[#C84C5A]">*</span>
             </Label>
             <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono font-semibold text-sm text-[#757575]">
+              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-sans tabular-nums font-semibold text-sm text-[#747474]">
                 Rp
               </span>
               <Input
@@ -385,7 +385,7 @@ export function PaymentFormClient({
                 value={nominalInput}
                 onChange={handleNominalChange}
                 placeholder="0"
-                className="pl-12 font-mono text-lg font-bold text-[#111111] border-[rgba(0,0,0,0.12)] rounded-[8px]"
+                className="pl-12 font-sans tabular-nums lining-nums text-lg font-bold text-[#202119] border border-[#E8E8E8] rounded-[8px] focus-visible:ring-2 focus-visible:ring-[#315FC4]"
                 required
               />
             </div>
@@ -397,7 +397,7 @@ export function PaymentFormClient({
               <button
                 type="button"
                 onClick={() => handleQuickNominal(unpaidBills[0].sisa)}
-                className="px-3 py-1.5 rounded-[8px] border border-[rgba(0,0,0,0.12)] text-xs font-medium text-[#111111] hover:bg-[#f6f5f4] transition-colors cursor-pointer"
+                className="px-3 py-1.5 rounded-[8px] border border-[#E8E8E8] text-xs font-medium text-[#202119] hover:bg-[#F5F5F5] transition-colors cursor-pointer"
               >
                 1 Bulan ({formatRupiah(unpaidBills[0].sisa)})
               </button>
@@ -407,7 +407,7 @@ export function PaymentFormClient({
               <button
                 type="button"
                 onClick={() => handleQuickNominal(totalOutstanding)}
-                className="px-3 py-1.5 rounded-[8px] border border-[rgba(0,117,222,0.3)] bg-[#e6f3fe] text-xs font-semibold text-[#0075de] hover:bg-[#d5ebfd] transition-colors cursor-pointer"
+                className="px-3 py-1.5 rounded-[8px] border border-[#202119] bg-[#202119] text-xs font-semibold text-white hover:bg-[#2e2f26] transition-colors cursor-pointer"
               >
                 Lunas Semua ({formatRupiah(totalOutstanding)})
               </button>
@@ -416,22 +416,22 @@ export function PaymentFormClient({
             <button
               type="button"
               onClick={() => handleQuickNominal(500000)}
-              className="px-3 py-1.5 rounded-[8px] border border-[rgba(0,0,0,0.12)] text-xs font-medium text-[#111111] hover:bg-[#f6f5f4] transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-[8px] border border-[#E8E8E8] text-xs font-medium text-[#202119] hover:bg-[#F5F5F5] transition-colors cursor-pointer"
             >
               Rp 500.000
             </button>
             <button
               type="button"
               onClick={() => handleQuickNominal(1000000)}
-              className="px-3 py-1.5 rounded-[8px] border border-[rgba(0,0,0,0.12)] text-xs font-medium text-[#111111] hover:bg-[#f6f5f4] transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-[8px] border border-[#E8E8E8] text-xs font-medium text-[#202119] hover:bg-[#F5F5F5] transition-colors cursor-pointer"
             >
               Rp 1.000.000
             </button>
           </div>
 
           {/* Allocation Information Note */}
-          <div className="p-3 rounded-[8px] bg-[#f6f5f4] border border-[rgba(0,0,0,0.08)] text-[11px] text-[#757575] space-y-1">
-            <div className="font-semibold text-[#111111]">Informasi Alokasi Dana:</div>
+          <div className="p-3 rounded-[8px] bg-[#F5F5F5] border border-[#E8E8E8] text-[11px] text-[#747474] space-y-1">
+            <div className="font-semibold text-[#202119]">Informasi Alokasi Dana:</div>
             <p>
               Tiap pembayaran syahriah akan dialokasikan tepat <strong>Rp 50.000</strong> ke tabungan santri, dan sisanya dialokasikan ke operasional pondok.
             </p>
@@ -439,8 +439,8 @@ export function PaymentFormClient({
 
           {/* Transfer Date */}
           <div className="space-y-1.5">
-            <Label htmlFor="tanggalBayar" className="text-xs font-semibold text-[#111111]">
-              Tanggal Transfer <span className="text-[#e32d14]">*</span>
+            <Label htmlFor="tanggalBayar" className="text-xs font-semibold text-[#202119]">
+              Tanggal Transfer <span className="text-[#C84C5A]">*</span>
             </Label>
             <Input
               id="tanggalBayar"
@@ -448,14 +448,14 @@ export function PaymentFormClient({
               value={tanggalBayar}
               max={new Date().toISOString().split('T')[0]}
               onChange={(e) => setTanggalBayar(e.target.value)}
-              className="border-[rgba(0,0,0,0.12)] rounded-[8px]"
+              className="border border-[#E8E8E8] rounded-[8px] text-[#202119] focus-visible:ring-2 focus-visible:ring-[#315FC4]"
               required
             />
           </div>
 
           {/* Notes */}
           <div className="space-y-1.5">
-            <Label htmlFor="catatan" className="text-xs font-semibold text-[#111111]">
+            <Label htmlFor="catatan" className="text-xs font-semibold text-[#202119]">
               Catatan Santri (Opsional)
             </Label>
             <Input
@@ -464,7 +464,7 @@ export function PaymentFormClient({
               placeholder="Contoh: Transfer via ATM BCA a.n. Bapak Ahmad Syahroni"
               value={catatanSantri}
               onChange={(e) => setCatatanSantri(e.target.value)}
-              className="border-[rgba(0,0,0,0.12)] rounded-[8px]"
+              className="border border-[#E8E8E8] rounded-[8px] text-[#202119] focus-visible:ring-2 focus-visible:ring-[#315FC4]"
               maxLength={250}
             />
           </div>
@@ -472,10 +472,10 @@ export function PaymentFormClient({
       </Card>
 
       {/* Proof Uploader Card */}
-      <Card className="rounded-[12px] border border-[rgba(0,0,0,0.08)] bg-white shadow-none">
+      <Card className="rounded-[18px] border border-[#E8E8E8] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
         <CardHeader className="pb-3">
-          <CardTitle className="text-xs font-semibold text-[rgba(0,0,0,0.6)] uppercase tracking-wider">
-            Unggah Foto Bukti Transfer <span className="text-[#e32d14]">*</span>
+          <CardTitle className="text-xs font-semibold text-[#626262] uppercase tracking-wider">
+            Unggah Foto Bukti Transfer <span className="text-[#C84C5A]">*</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -488,7 +488,7 @@ export function PaymentFormClient({
 
       {/* General Error Notice */}
       {errorMessage && (
-        <div className="p-3 rounded-[8px] bg-[#fdeeed] border border-[rgba(227,45,20,0.2)] text-[#e32d14] text-xs flex items-center gap-2">
+        <div className="p-3 rounded-[18px] bg-[#FCEDEF] border border-[rgba(200,76,90,0.2)] text-[#C84C5A] text-xs flex items-center gap-2">
           <AlertTriangle className="h-4 w-4 shrink-0" />
           <span>{errorMessage}</span>
         </div>
@@ -498,7 +498,7 @@ export function PaymentFormClient({
       <Button
         type="submit"
         disabled={isSubmitting || !compressedProof || nominal <= 0}
-        className="w-full h-11 rounded-[8px] bg-[#0075de] hover:bg-[#0060b8] text-white font-medium text-sm shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full h-11 rounded-[8px] bg-[#202119] hover:bg-[#2e2f26] text-white font-medium text-sm shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
       >
         {isSubmitting ? (
           <>

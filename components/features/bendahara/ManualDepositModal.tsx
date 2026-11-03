@@ -82,17 +82,17 @@ export function ManualDepositModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#111111]/50 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white rounded-[12px] max-w-lg w-full shadow-none border border-[rgba(0,0,0,0.08)] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in">
+      <div className="bg-white rounded-[18px] max-w-lg w-full shadow-2xl border border-[#E8E8E8] overflow-hidden">
         {/* Header */}
-        <div className="bg-[#0075de] px-6 py-4 text-white flex justify-between items-center">
+        <div className="bg-[#202119] px-6 py-4 text-white flex justify-between items-center">
           <div>
-            <h3 className="text-lg font-bold font-heading">Setor Saldo Awal / Koreksi</h3>
-            <p className="text-xs text-[#e6f3fe]">Pencatatan pembukuan saldo tabungan santri</p>
+            <h3 className="text-lg font-bold font-sans text-white">Setor Saldo Awal / Koreksi</h3>
+            <p className="text-xs text-[#EAEAEA]">Pencatatan pembukuan saldo tabungan santri</p>
           </div>
           <button
             onClick={handleClose}
-            className="text-[#e6f3fe] hover:text-white text-2xl leading-none"
+            className="text-[#EAEAEA] hover:text-white text-2xl leading-none cursor-pointer"
             aria-label="Tutup"
           >
             &times;
@@ -102,13 +102,13 @@ export function ManualDepositModal({
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           {/* Santri Selector */}
           <div>
-            <label className="block text-xs font-semibold text-[#111111] mb-1">
-              Pilih Santri <span className="text-[#e32d14]">*</span>
+            <label className="block text-xs font-semibold text-[#202119] mb-1">
+              Pilih Santri <span className="text-[#C84C5A]">*</span>
             </label>
             <select
               value={santriId}
               onChange={(e) => setSantriId(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-[8px] border border-[rgba(0,0,0,0.12)] text-sm focus:outline-none focus:ring-1 focus:ring-[#0075de] bg-white shadow-none"
+              className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E8E8E8] text-sm text-[#202119] focus:outline-none focus:ring-1 focus:ring-[#315FC4] bg-white shadow-none"
               required
             >
               <option value="">-- Pilih Santri --</option>
@@ -123,13 +123,13 @@ export function ManualDepositModal({
           {/* Jenis Mutasi */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#111111] mb-1">
-                Jenis Mutasi <span className="text-[#e32d14]">*</span>
+              <label className="block text-xs font-semibold text-[#202119] mb-1">
+                Jenis Mutasi <span className="text-[#C84C5A]">*</span>
               </label>
               <select
                 value={jenisMutasi}
                 onChange={(e) => setJenisMutasi(e.target.value as any)}
-                className="w-full px-3.5 py-2.5 rounded-[8px] border border-[rgba(0,0,0,0.12)] text-sm focus:outline-none focus:ring-1 focus:ring-[#0075de] bg-white shadow-none"
+                className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E8E8E8] text-sm text-[#202119] focus:outline-none focus:ring-1 focus:ring-[#315FC4] bg-white shadow-none"
               >
                 <option value="saldo_awal">Saldo Awal (Migrasi)</option>
                 <option value="koreksi">Koreksi Saldo (+)</option>
@@ -138,14 +138,14 @@ export function ManualDepositModal({
 
             {/* Tanggal Transaksi */}
             <div>
-              <label className="block text-xs font-semibold text-[#111111] mb-1">
-                Tanggal Transaksi <span className="text-[#e32d14]">*</span>
+              <label className="block text-xs font-semibold text-[#202119] mb-1">
+                Tanggal Transaksi <span className="text-[#C84C5A]">*</span>
               </label>
               <input
                 type="date"
                 value={tanggal}
                 onChange={(e) => setTanggal(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-[8px] border border-[rgba(0,0,0,0.12)] text-sm focus:outline-none focus:ring-1 focus:ring-[#0075de] bg-white shadow-none"
+                className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E8E8E8] text-sm text-[#202119] focus:outline-none focus:ring-1 focus:ring-[#315FC4] bg-white shadow-none"
                 required
               />
             </div>
@@ -153,8 +153,8 @@ export function ManualDepositModal({
 
           {/* Nominal */}
           <div>
-            <label className="block text-xs font-semibold text-[#111111] mb-1">
-              Nominal Setoran (Rp) <span className="text-[#e32d14]">*</span>
+            <label className="block text-xs font-semibold text-[#202119] mb-1">
+              Nominal Setoran (Rp) <span className="text-[#C84C5A]">*</span>
             </label>
             <input
               type="number"
@@ -162,29 +162,29 @@ export function ManualDepositModal({
               value={nominal}
               onChange={(e) => setNominal(e.target.value === '' ? '' : Number(e.target.value))}
               placeholder="Contoh: 200000"
-              className="w-full px-3.5 py-2.5 rounded-[8px] border border-[rgba(0,0,0,0.12)] text-sm font-mono focus:outline-none focus:ring-1 focus:ring-[#0075de] bg-white shadow-none"
+              className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E8E8E8] text-sm font-mono text-[#202119] focus:outline-none focus:ring-1 focus:ring-[#315FC4] bg-white shadow-none"
               required
             />
           </div>
 
           {/* Keterangan */}
           <div>
-            <label className="block text-xs font-semibold text-[#111111] mb-1">
-              Keterangan Pembukuan <span className="text-[#e32d14]">*</span>
+            <label className="block text-xs font-semibold text-[#202119] mb-1">
+              Keterangan Pembukuan <span className="text-[#C84C5A]">*</span>
             </label>
             <textarea
               rows={2}
               value={keterangan}
               onChange={(e) => setKeterangan(e.target.value)}
               placeholder="Catatan sumber dana (misal: Saldo tabungan bawaan dari pondok lama)..."
-              className="w-full px-3.5 py-2.5 rounded-[8px] border border-[rgba(0,0,0,0.12)] text-sm focus:outline-none focus:ring-1 focus:ring-[#0075de] bg-white shadow-none"
+              className="w-full px-3.5 py-2.5 rounded-[8px] border border-[#E8E8E8] text-sm text-[#202119] focus:outline-none focus:ring-1 focus:ring-[#315FC4] bg-white shadow-none"
               required
             />
-            <p className="text-[11px] text-[#757575] mt-0.5">Minimal 5 karakter</p>
+            <p className="text-[11px] text-[#626262] mt-0.5">Minimal 5 karakter</p>
           </div>
 
           {error && (
-            <div className="bg-[#fdeeed] border border-[#e32d14]/20 text-[#e32d14] text-xs rounded-[8px] p-3">
+            <div className="bg-[#FCEDEF] border border-[rgba(200,76,90,0.2)] text-[#C84C5A] text-xs rounded-[8px] p-3">
               {error}
             </div>
           )}
@@ -194,14 +194,14 @@ export function ManualDepositModal({
               type="button"
               onClick={handleClose}
               disabled={loading}
-              className="flex-1 py-2.5 px-4 bg-[#f6f5f4] hover:bg-[rgba(0,0,0,0.08)] text-[#111111] font-medium rounded-[8px] text-sm transition"
+              className="flex-1 py-2.5 px-4 bg-[#F5F5F5] hover:bg-[#EAEAEA] text-[#202119] font-medium rounded-[8px] text-sm transition cursor-pointer"
             >
               Batal
             </button>
             <button
               type="submit"
               disabled={isInvalid || loading}
-              className="flex-1 py-2.5 px-4 bg-[#0075de] hover:bg-[#0060b8] disabled:bg-[rgba(0,0,0,0.08)] disabled:text-[#757575] text-white font-medium rounded-[8px] text-sm transition shadow-none"
+              className="flex-1 py-2.5 px-4 bg-[#202119] hover:bg-[#2e2f26] disabled:bg-[#F5F5F5] disabled:text-[#747474] text-white font-medium rounded-[8px] text-sm transition shadow-none cursor-pointer focus-visible:ring-[#315FC4]"
             >
               {loading ? 'Menyimpan...' : 'Simpan Mutasi'}
             </button>

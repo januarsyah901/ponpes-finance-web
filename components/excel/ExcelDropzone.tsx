@@ -91,7 +91,7 @@ export function ExcelDropzone({ onValidationComplete, disabled }: ExcelDropzoneP
   return (
     <div className="space-y-3">
       {error && (
-        <Alert variant="destructive" className="py-2.5 rounded-[8px] bg-[#fdeeed] border-[rgba(227,45,20,0.2)] text-[#e32d14]">
+        <Alert variant="destructive" className="py-2.5 rounded-[18px] bg-[#FCEDEF] border-[rgba(200,76,90,0.2)] text-[#C84C5A]">
           <AlertCircle className="h-4 w-4" />
           <AlertDescription className="text-xs font-medium">{error}</AlertDescription>
         </Alert>
@@ -102,10 +102,10 @@ export function ExcelDropzone({ onValidationComplete, disabled }: ExcelDropzoneP
         onDragLeave={() => setIsDragging(false)}
         onDrop={handleDrop}
         onClick={() => !isLoading && !disabled && fileInputRef.current?.click()}
-        className={`border-2 border-dashed rounded-[12px] p-8 text-center transition-all cursor-pointer ${
+        className={`border-2 border-dashed rounded-[18px] p-8 text-center transition-all cursor-pointer ${
           isDragging
-            ? 'border-[#0075de] bg-[#e6f3fe]'
-            : 'border-[rgba(0,0,0,0.12)] bg-white hover:border-[#0075de] hover:bg-[#f6f5f4]'
+            ? 'border-[#202119] bg-[#F5F5F5]'
+            : 'border-[#E8E8E8] bg-white hover:border-[#202119] hover:bg-[#F6F6F6]'
         }`}
       >
         <input
@@ -118,19 +118,19 @@ export function ExcelDropzone({ onValidationComplete, disabled }: ExcelDropzoneP
         />
 
         <div className="flex flex-col items-center justify-center space-y-3">
-          <div className="h-14 w-14 rounded-[12px] bg-[#e6f3fe] text-[#0075de] flex items-center justify-center">
+          <div className="h-14 w-14 rounded-full bg-[#F5F5F5] text-[#202119] flex items-center justify-center">
             {isLoading ? (
-              <Loader2 className="h-7 w-7 animate-spin text-[#0075de]" />
+              <Loader2 className="h-7 w-7 animate-spin text-[#202119]" />
             ) : (
-              <UploadCloud className="h-7 w-7" />
+              <UploadCloud className="h-7 w-7 text-[#202119]" />
             )}
           </div>
 
           <div>
-            <div className="text-sm font-semibold text-[#111111]">
+            <div className="text-sm font-semibold text-[#202119]">
               {isLoading ? 'Sedang memproses & memvalidasi file Excel...' : 'Tarik & lepas file Excel (.xlsx) di sini'}
             </div>
-            <p className="text-xs text-[#757575] mt-1">
+            <p className="text-xs text-[#626262] mt-1">
               atau klik untuk memilih file dari komputer Anda
             </p>
           </div>

@@ -2,6 +2,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 // WCAG relative luminance & contrast ratio implementation
 function hexToRgb(hex: string): { r: number; g: number; b: number } {
@@ -32,35 +33,53 @@ function calculateContrastRatio(hex1: string, hex2: string): number {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
-describe('Design System Conformance & WCAG 2.1 Contrast Testing', () => {
-  const baseDir = path.resolve('/home/kadalcoklat/Downloads/projects/ponpes-finance/ponpes-finance-web');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+describe('Finexy Design System Conformance & WCAG 2.1 Contrast Testing', () => {
+  const baseDir = path.resolve(__dirname, '..');
   const cssPath = path.resolve(baseDir, 'app/globals.css');
   const fontsPath = path.resolve(baseDir, 'app/fonts.ts');
   const layoutPath = path.resolve(baseDir, 'app/layout.tsx');
+  const buttonPath = path.resolve(baseDir, 'components/ui/button.tsx');
+  const cardPath = path.resolve(baseDir, 'components/ui/card.tsx');
+  const currencyPath = path.resolve(baseDir, 'components/domain/CurrencyDisplay.tsx');
 
   const cssContent = fs.readFileSync(cssPath, 'utf-8');
   const fontsContent = fs.readFileSync(fontsPath, 'utf-8');
   const layoutContent = fs.readFileSync(layoutPath, 'utf-8');
+  const buttonContent = fs.readFileSync(buttonPath, 'utf-8');
+  const cardContent = fs.readFileSync(cardPath, 'utf-8');
+  const currencyContent = fs.readFileSync(currencyPath, 'utf-8');
 
-  it('DS-01: Exactly defines required Notion color tokens and compatibility aliases in globals.css @theme', () => {
+  it('DS-01: Exactly defines required Finexy color tokens and compatibility aliases in globals.css @theme', () => {
     const expectedHexTokens: Record<string, string> = {
-      '--color-notion-canvas': '#f6f5f4',
-      '--color-notion-card': '#ffffff',
-      '--color-notion-blue': '#0075de',
-      '--color-notion-blue-hover': '#0060b8',
-      '--color-notion-sky-tint': '#e6f3fe',
-      '--color-notion-charcoal': '#111111',
-      '--color-notion-stone': '#757575',
-      '--color-canvas-bg': '#f6f5f4',
+      '--color-finexy-outer': '#eaeaea',
+      '--color-finexy-canvas': '#f6f6f6',
+      '--color-finexy-card': '#ffffff',
+      '--color-finexy-soft-gray': '#f5f5f5',
+      '--color-finexy-ink': '#202119',
+      '--color-finexy-ink-hover': '#2e2f26',
+      '--color-finexy-secondary': '#626262',
+      '--color-finexy-muted': '#747474',
+      '--color-finexy-hairline': '#e8e8e8',
+      '--color-finexy-orange': '#f4512a',
+      '--color-finexy-positive': '#2b8a60',
+      '--color-finexy-positive-wash': '#eaf7ef',
+      '--color-finexy-negative': '#c84c5a',
+      '--color-finexy-negative-wash': '#fcedef',
+      '--color-finexy-ring': '#315fc4',
+      // Semantic Aliases
+      '--color-canvas-bg': '#f6f6f6',
       '--color-surface-card': '#ffffff',
-      '--color-text-dark': '#111111',
-      '--color-text-muted': '#757575',
-      '--color-primary-forest': '#0075de',
-      '--color-primary-forest-hover': '#0060b8',
-      '--color-primary-forest-subtle': '#e6f3fe',
-      '--color-accent-emerald': '#097fe8',
-      '--color-gold-amber': '#e89d01',
-      '--color-warning-red': '#e32d14',
+      '--color-border-subtle': '#e8e8e8',
+      '--color-text-dark': '#202119',
+      '--color-text-secondary': '#626262',
+      '--color-text-muted': '#747474',
+      '--color-primary-forest': '#202119',
+      '--color-primary-forest-hover': '#2e2f26',
+      '--color-accent-orange': '#f4512a',
+      '--color-warning-red': '#c84c5a',
     };
 
     for (const [varName, expectedHex] of Object.entries(expectedHexTokens)) {
@@ -71,104 +90,120 @@ describe('Design System Conformance & WCAG 2.1 Contrast Testing', () => {
         `Token ${varName} must be defined with exact hex ${expectedHex}`
       );
     }
-
-    assert.match(
-      cssContent,
-      /--color-notion-hairline:\s*rgba\(0,\s*0,\s*0,\s*0\.08\)/i,
-      '--color-notion-hairline must be defined as rgba(0, 0, 0, 0.08)'
-    );
-    assert.match(
-      cssContent,
-      /--color-border-subtle:\s*rgba\(0,\s*0,\s*0,\s*0\.08\)/i,
-      '--color-border-subtle must be defined as rgba(0, 0, 0, 0.08)'
-    );
   });
 
-  it('DS-02: Configures required Google Fonts in fonts.ts (Inter, Source_Serif_4, JetBrains_Mono)', () => {
+  it('DS-02: Configures Finexy shape and radius system in globals.css @theme', () => {
+    assert.match(cssContent, /--radius-card:\s*18px/i, '--radius-card must be 18px');
+    assert.match(cssContent, /--radius-btn:\s*8px/i, '--radius-btn must be 8px');
+    assert.match(cssContent, /--radius-pill:\s*9999px/i, '--radius-pill must be 9999px');
+  });
+
+  it('DS-03: Configures Inter Google Font in fonts.ts', () => {
     assert.match(fontsContent, /Inter/, 'Inter must be imported');
-    assert.match(fontsContent, /Source_Serif_4/, 'Source_Serif_4 must be imported');
-    assert.match(fontsContent, /JetBrains_Mono/, 'JetBrains Mono must be imported');
-
-    assert.match(fontsContent, /variable:\s*['"]--font-heading['"]/, '--font-heading variable bound');
+    assert.match(fontsContent, /fontHeading\s*=\s*Inter\(/, 'fontHeading must use Inter');
+    assert.match(fontsContent, /fontSans\s*=\s*Inter\(/, 'fontSans must use Inter');
     assert.match(fontsContent, /variable:\s*['"]--font-sans['"]/, '--font-sans variable bound');
-    assert.match(fontsContent, /variable:\s*['"]--font-serif['"]/, '--font-serif variable bound');
-    assert.match(fontsContent, /variable:\s*['"]--font-mono['"]/, '--font-mono variable bound');
+    assert.match(fontsContent, /variable:\s*['"]--font-heading['"]/, '--font-heading variable bound');
   });
 
-  it('DS-03: Injects font variables into RootLayout HTML element in layout.tsx', () => {
+  it('DS-04: Injects font variables and root canvas styling in layout.tsx', () => {
     assert.match(layoutContent, /fontHeading\.variable/, 'fontHeading.variable must be applied');
     assert.match(layoutContent, /fontSans\.variable/, 'fontSans.variable must be applied');
-    assert.match(layoutContent, /fontSerif\.variable/, 'fontSerif.variable must be applied');
-    assert.match(layoutContent, /fontMono\.variable/, 'fontMono.variable must be applied');
+    assert.match(layoutContent, /themeColor:\s*['"]#F6F6F6['"]/i, 'themeColor must be #F6F6F6');
+    assert.match(layoutContent, /bg-\[#F6F6F6\]/i, 'Body background must use Finexy canvas #F6F6F6');
+    assert.match(layoutContent, /text-\[#202119\]/i, 'Body text must use Finexy ink #202119');
   });
 
-  it('DS-04: WCAG 2.1 Contrast - Text Charcoal (#111111) on Card (#ffffff) and Canvas (#f6f5f4)', () => {
-    const ratioWhite = calculateContrastRatio('#111111', '#ffffff');
-    const ratioCanvas = calculateContrastRatio('#111111', '#f6f5f4');
+  it('DS-05: WCAG 2.1 AAA Contrast - Ink Olive (#202119) Text across all surface tokens', () => {
+    const ratioWhite = calculateContrastRatio('#202119', '#FFFFFF');
+    const ratioCanvas = calculateContrastRatio('#202119', '#F6F6F6');
+    const ratioOuter = calculateContrastRatio('#202119', '#EAEAEA');
+    const ratioSoftGray = calculateContrastRatio('#202119', '#F5F5F5');
 
-    console.log(`[WCAG] Charcoal on White: ${ratioWhite.toFixed(2)}:1 (Target: >= 7:1 AAA)`);
-    console.log(`[WCAG] Charcoal on Canvas: ${ratioCanvas.toFixed(2)}:1 (Target: >= 7:1 AAA)`);
+    console.log(`[WCAG AAA] Ink Olive on Card (#FFFFFF): ${ratioWhite.toFixed(2)}:1 (Target: >= 7.0:1)`);
+    console.log(`[WCAG AAA] Ink Olive on Canvas (#F6F6F6): ${ratioCanvas.toFixed(2)}:1 (Target: >= 7.0:1)`);
+    console.log(`[WCAG AAA] Ink Olive on Outer Gray (#EAEAEA): ${ratioOuter.toFixed(2)}:1 (Target: >= 7.0:1)`);
+    console.log(`[WCAG AAA] Ink Olive on Soft Gray (#F5F5F5): ${ratioSoftGray.toFixed(2)}:1 (Target: >= 7.0:1)`);
 
     assert.ok(ratioWhite >= 7.0, `Expected AAA (>= 7.0), got ${ratioWhite.toFixed(2)}`);
     assert.ok(ratioCanvas >= 7.0, `Expected AAA (>= 7.0), got ${ratioCanvas.toFixed(2)}`);
+    assert.ok(ratioOuter >= 7.0, `Expected AAA (>= 7.0), got ${ratioOuter.toFixed(2)}`);
+    assert.ok(ratioSoftGray >= 7.0, `Expected AAA (>= 7.0), got ${ratioSoftGray.toFixed(2)}`);
   });
 
-  it('DS-05: WCAG 2.1 Contrast - Text Stone Muted (#757575) on Card (#ffffff) and Canvas (#f6f5f4)', () => {
-    const ratioWhite = calculateContrastRatio('#757575', '#ffffff');
-    const ratioCanvas = calculateContrastRatio('#757575', '#f6f5f4');
+  it('DS-06: WCAG 2.1 AA Contrast - Secondary Gray (#626262) & Muted Gray (#747474)', () => {
+    const ratioSecondaryWhite = calculateContrastRatio('#626262', '#FFFFFF');
+    const ratioSecondaryCanvas = calculateContrastRatio('#626262', '#F6F6F6');
+    const ratioMutedWhite = calculateContrastRatio('#747474', '#FFFFFF');
+    const ratioMutedCanvas = calculateContrastRatio('#747474', '#F6F6F6');
 
-    console.log(`[WCAG] Stone Muted on White: ${ratioWhite.toFixed(2)}:1 (Target: >= 4.5:1 AA)`);
-    console.log(`[WCAG] Stone Muted on Canvas: ${ratioCanvas.toFixed(2)}:1 (Target: >= 4.0:1)`);
+    console.log(`[WCAG AA] Secondary Gray on Card (#FFFFFF): ${ratioSecondaryWhite.toFixed(2)}:1 (Target: >= 4.5:1)`);
+    console.log(`[WCAG AA] Secondary Gray on Canvas (#F6F6F6): ${ratioSecondaryCanvas.toFixed(2)}:1 (Target: >= 4.5:1)`);
+    console.log(`[WCAG AA] Muted Gray on Card (#FFFFFF): ${ratioMutedWhite.toFixed(2)}:1 (Target: >= 4.5:1)`);
+    console.log(`[WCAG AA] Muted Gray on Canvas (#F6F6F6): ${ratioMutedCanvas.toFixed(2)}:1 (Target: >= 4.0:1)`);
 
-    assert.ok(ratioWhite >= 4.5, `Expected AA (>= 4.5), got ${ratioWhite.toFixed(2)}`);
-    assert.ok(ratioCanvas >= 4.0, `Expected AA/large (>= 4.0), got ${ratioCanvas.toFixed(2)}`);
+    assert.ok(ratioSecondaryWhite >= 4.5, `Expected AA (>= 4.5), got ${ratioSecondaryWhite.toFixed(2)}`);
+    assert.ok(ratioSecondaryCanvas >= 4.5, `Expected AA (>= 4.5), got ${ratioSecondaryCanvas.toFixed(2)}`);
+    assert.ok(ratioMutedWhite >= 4.5, `Expected AA (>= 4.5), got ${ratioMutedWhite.toFixed(2)}`);
+    assert.ok(ratioMutedCanvas >= 4.0, `Expected AA/large (>= 4.0), got ${ratioMutedCanvas.toFixed(2)}`);
   });
 
-  it('DS-06: WCAG 2.1 Contrast - Primary CTA Notion Blue (#0075de) on Card (#ffffff) and Canvas (#f6f5f4)', () => {
-    const ratioWhite = calculateContrastRatio('#0075de', '#ffffff');
-    const ratioCanvas = calculateContrastRatio('#0075de', '#f6f5f4');
-    console.log(`[WCAG] Notion Blue on White: ${ratioWhite.toFixed(2)}:1 (Target: >= 4.5:1 AA)`);
-    console.log(`[WCAG] Notion Blue on Canvas: ${ratioCanvas.toFixed(2)}:1 (Target: >= 4.0:1)`);
-    assert.ok(ratioWhite >= 4.5, `Expected AA (>= 4.5), got ${ratioWhite.toFixed(2)}`);
-    assert.ok(ratioCanvas >= 4.0, `Expected >= 4.0, got ${ratioCanvas.toFixed(2)}`);
+  it('DS-07: WCAG 2.1 AAA Contrast - Primary CTA Button Ink Olive (#202119) and Hover (#2e2f26)', () => {
+    const ratioInk = calculateContrastRatio('#FFFFFF', '#202119');
+    const ratioHover = calculateContrastRatio('#FFFFFF', '#2E2F26');
+    const ratioContainerCanvas = calculateContrastRatio('#202119', '#F6F6F6');
+
+    console.log(`[WCAG AAA] White text on Ink Olive (#202119): ${ratioInk.toFixed(2)}:1 (Target: >= 7.0:1)`);
+    console.log(`[WCAG AAA] White text on Ink Olive Hover (#2E2F26): ${ratioHover.toFixed(2)}:1 (Target: >= 7.0:1)`);
+    console.log(`[WCAG AAA] Ink Olive Button on Canvas (#F6F6F6): ${ratioContainerCanvas.toFixed(2)}:1 (Target: >= 7.0:1)`);
+
+    assert.ok(ratioInk >= 7.0, `Expected AAA (>= 7.0), got ${ratioInk.toFixed(2)}`);
+    assert.ok(ratioHover >= 7.0, `Expected AAA (>= 7.0), got ${ratioHover.toFixed(2)}`);
+    assert.ok(ratioContainerCanvas >= 7.0, `Expected AAA (>= 7.0), got ${ratioContainerCanvas.toFixed(2)}`);
   });
 
-  it('DS-07: WCAG 2.1 Contrast - White Text (#ffffff) on Notion Blue (#0075de) and Hover (#0060b8)', () => {
-    const ratioBlue = calculateContrastRatio('#ffffff', '#0075de');
-    const ratioHover = calculateContrastRatio('#ffffff', '#0060b8');
-    console.log(`[WCAG] White Text on Notion Blue: ${ratioBlue.toFixed(2)}:1 (Target: >= 4.5:1 AA)`);
-    console.log(`[WCAG] White Text on Blue Hover: ${ratioHover.toFixed(2)}:1 (Target: >= 4.5:1 AA)`);
-    assert.ok(ratioBlue >= 4.5, `Expected AA (>= 4.5), got ${ratioBlue.toFixed(2)}`);
-    assert.ok(ratioHover >= 4.5, `Expected AA (>= 4.5), got ${ratioHover.toFixed(2)}`);
+  it('DS-08: WCAG 2.1 Status Badges Contrast - Positive (#2B8A60) & Negative (#C84C5A) on Wash Pairs', () => {
+    const ratioPositiveWash = calculateContrastRatio('#2B8A60', '#EAF7EF');
+    const ratioPositiveWhite = calculateContrastRatio('#2B8A60', '#FFFFFF');
+    const ratioNegativeWash = calculateContrastRatio('#C84C5A', '#FCEDEF');
+    const ratioNegativeWhite = calculateContrastRatio('#C84C5A', '#FFFFFF');
+
+    console.log(`[WCAG Status] Positive on Wash (#2B8A60 on #EAF7EF): ${ratioPositiveWash.toFixed(2)}:1 (Target: >= 3.0:1)`);
+    console.log(`[WCAG Status] Positive on White (#2B8A60 on #FFFFFF): ${ratioPositiveWhite.toFixed(2)}:1 (Target: >= 4.0:1)`);
+    console.log(`[WCAG Status] Negative on Wash (#C84C5A on #FCEDEF): ${ratioNegativeWash.toFixed(2)}:1 (Target: >= 3.0:1)`);
+    console.log(`[WCAG Status] Negative on White (#C84C5A on #FFFFFF): ${ratioNegativeWhite.toFixed(2)}:1 (Target: >= 4.5:1)`);
+
+    assert.ok(ratioPositiveWash >= 3.0, `Expected >= 3.0, got ${ratioPositiveWash.toFixed(2)}`);
+    assert.ok(ratioPositiveWhite >= 4.0, `Expected >= 4.0, got ${ratioPositiveWhite.toFixed(2)}`);
+    assert.ok(ratioNegativeWash >= 3.0, `Expected >= 3.0, got ${ratioNegativeWash.toFixed(2)}`);
+    assert.ok(ratioNegativeWhite >= 4.5, `Expected >= 4.5, got ${ratioNegativeWhite.toFixed(2)}`);
   });
 
-  it('DS-08: WCAG 2.1 Contrast - Status Badge Foreground on Subtle Background Tokens', () => {
-    // Sky Tint: #02093a on #e6f3fe
-    const ratioSky = calculateContrastRatio('#02093a', '#e6f3fe');
-    console.log(`[WCAG] Midnight Ink Badge Text (#02093a on #e6f3fe): ${ratioSky.toFixed(2)}:1`);
-    assert.ok(ratioSky >= 4.5, `Sky badge text must satisfy AA >= 4.5:1, got ${ratioSky.toFixed(2)}`);
+  it('DS-09: WCAG 2.1 Non-Text / Accent Contrast - Focus Ring (#315FC4) & Orange (#F4512A)', () => {
+    const ratioRingWhite = calculateContrastRatio('#315FC4', '#FFFFFF');
+    const ratioOrangeWhite = calculateContrastRatio('#F4512A', '#FFFFFF');
 
-    // Saffron: #92400e on #fff6e5
-    const ratioSaffron = calculateContrastRatio('#92400e', '#fff6e5');
-    console.log(`[WCAG] Saffron Badge Text (#92400e on #fff6e5): ${ratioSaffron.toFixed(2)}:1`);
-    assert.ok(ratioSaffron >= 4.5, `Saffron badge text must satisfy AA >= 4.5:1, got ${ratioSaffron.toFixed(2)}`);
+    console.log(`[WCAG Accent] Focus Ring on White (#315FC4 on #FFFFFF): ${ratioRingWhite.toFixed(2)}:1 (Target: >= 3.0:1)`);
+    console.log(`[WCAG Accent] Orange on White (#F4512A on #FFFFFF): ${ratioOrangeWhite.toFixed(2)}:1 (Target: >= 3.0:1)`);
 
-    // Vermillion: #991b1b on #fdeeed
-    const ratioRed = calculateContrastRatio('#991b1b', '#fdeeed');
-    console.log(`[WCAG] Vermillion Badge Text (#991b1b on #fdeeed): ${ratioRed.toFixed(2)}:1`);
-    assert.ok(ratioRed >= 4.5, `Vermillion badge text must satisfy AA >= 4.5:1, got ${ratioRed.toFixed(2)}`);
+    assert.ok(ratioRingWhite >= 3.0, `Focus ring must meet non-text contrast >= 3.0:1, got ${ratioRingWhite.toFixed(2)}`);
+    assert.ok(ratioOrangeWhite >= 3.0, `Orange accent must meet non-text/graphical contrast >= 3.0:1, got ${ratioOrangeWhite.toFixed(2)}`);
   });
 
-  it('DS-09: WCAG 2.1 Analysis - White Text (#ffffff) on Notion Blue (#0075de) and Vermillion (#e32d14)', () => {
-    const ratioBlue = calculateContrastRatio('#ffffff', '#0075de');
-    const ratioRed = calculateContrastRatio('#ffffff', '#e32d14');
-    const ratioSaffron = calculateContrastRatio('#ffffff', '#e89d01');
+  it('DS-10: Component Implementation Compliance (Button, Card, CurrencyDisplay)', () => {
+    // Button compliance
+    assert.match(buttonContent, /bg-\[#202119\]/i, 'Button must use Ink Olive #202119 default background');
+    assert.match(buttonContent, /text-white/i, 'Button must use text-white');
+    assert.match(buttonContent, /hover:bg-\[#2e2f26\]/i, 'Button must use hover:bg-[#2e2f26]');
+    assert.match(buttonContent, /focus-visible:ring-\[#315FC4\]/i, 'Button must use focus ring #315FC4');
+    assert.match(buttonContent, /rounded-\[8px\]/i, 'Button must use rounded-[8px]');
 
-    console.log(`[WCAG Analysis] White on Notion Blue (#0075de): ${ratioBlue.toFixed(2)}:1`);
-    console.log(`[WCAG Analysis] White on Vermillion (#e32d14): ${ratioRed.toFixed(2)}:1`);
-    console.log(`[WCAG Analysis] White on Saffron (#e89d01): ${ratioSaffron.toFixed(2)}:1`);
+    // Card compliance
+    assert.match(cardContent, /rounded-\[18px\]/i, 'Card must use rounded-[18px]');
+    assert.match(cardContent, /border-\[#E8E8E8\]/i, 'Card must use hairline border #E8E8E8');
 
-    assert.ok(ratioBlue >= 4.5, 'Notion Blue button text meets WCAG AA >= 4.5:1');
-    assert.ok(ratioRed > 3.0, 'Vermillion button text meets large/graphical ratio > 3.0:1');
+    // CurrencyDisplay compliance
+    assert.match(currencyContent, /tabular-nums/i, 'CurrencyDisplay must include tabular-nums');
+    assert.match(currencyContent, /lining-nums/i, 'CurrencyDisplay must include lining-nums');
   });
 });

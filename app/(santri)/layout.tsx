@@ -7,7 +7,7 @@ export default function SantriLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col bg-[#f6f5f4]">
+    <div className="flex min-h-screen flex-col bg-[#F6F6F6] text-[#202119]">
       <SantriHeader />
       <main className="flex-1 p-4 sm:p-6 pb-24 md:pb-6 max-w-4xl w-full mx-auto">
         {children}

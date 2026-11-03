@@ -22,8 +22,8 @@ export function CurrencyDisplay({
   return (
     <span
       className={cn(
-        "font-mono tabular-nums tracking-tight font-medium inline-flex items-center",
-        isNegative ? "text-[#e32d14]" : "text-[#111111]",
+        "font-sans tabular-nums lining-nums tracking-tight font-medium inline-flex items-center",
+        isNegative ? "text-[#C84C5A]" : "text-[#202119]",
         className
       )}
       {...props}

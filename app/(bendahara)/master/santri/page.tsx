@@ -13,10 +13,10 @@ export default async function SantriMasterPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-[#111111] font-heading">
+        <h1 className="text-2xl font-bold tracking-tight text-[#202119] font-heading">
           Direktori Santri
         </h1>
-        <p className="text-sm text-[#757575]">
+        <p className="text-sm text-[#626262]">
           Kelola profil seluruh santri aktif dan boyong di lingkungan pondok pesantren.
         </p>
       </div>

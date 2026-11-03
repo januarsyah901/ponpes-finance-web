@@ -18,7 +18,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  themeColor: '#f6f5f4',
+  themeColor: '#F6F6F6',
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="id"
       className={`${fontHeading.variable} ${fontSans.variable} ${fontSerif.variable} ${fontMono.variable}`}
     >
-      <body className="font-sans min-h-screen bg-[#f6f5f4] text-[#111111] antialiased">
+      <body className="font-sans min-h-screen bg-[#F6F6F6] text-[#202119] antialiased">
         <Providers>
           {children}
         </Providers>

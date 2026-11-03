@@ -170,15 +170,15 @@ export function ProofInspectionModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl w-[95vw] h-[90vh] p-0 overflow-hidden flex flex-col sm:rounded-[12px]">
+      <DialogContent className="max-w-5xl w-[95vw] h-[90vh] p-0 overflow-hidden flex flex-col sm:rounded-[18px] border border-[#E8E8E8] bg-white">
         {/* Header */}
-        <DialogHeader className="px-6 py-4 border-b border-[rgba(0,0,0,0.08)] shrink-0">
+        <DialogHeader className="px-6 py-4 border-b border-[#E8E8E8] shrink-0">
           <div className="flex items-center justify-between pr-8">
             <div>
-              <DialogTitle className="text-base font-bold font-heading text-[#111111]">
+              <DialogTitle className="text-base font-bold font-sans text-[#202119]">
                 Pemeriksaan &amp; Verifikasi Bukti Transfer
               </DialogTitle>
-              <p className="text-xs text-[#757575]">
+              <p className="text-xs text-[#626262]">
                 ID Pembayaran: <span className="font-mono">{payment.id.slice(0, 8)}...</span> • Tanggal: {formatDateIndo(payment.tanggalBayar)}
               </p>
             </div>
@@ -189,13 +189,13 @@ export function ProofInspectionModal({
         {/* Body: Split View */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
           {/* Left Column: Proof Image Inspector (Canvas/Pan/Zoom) */}
-          <div className="lg:col-span-7 bg-[#111111] relative flex flex-col overflow-hidden select-none">
+          <div className="lg:col-span-7 bg-[#202119] relative flex flex-col overflow-hidden select-none">
             {/* Zoom Controls Overlay */}
-            <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-[rgba(0,0,0,0.7)] backdrop-blur-md p-1.5 rounded-[8px] border border-[rgba(255,255,255,0.1)] text-white">
+            <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-[#202119]/80 backdrop-blur-md p-1.5 rounded-[8px] border border-white/10 text-white">
               <button
                 type="button"
                 onClick={handleZoomIn}
-                className="p-1.5 rounded-[6px] hover:bg-[rgba(255,255,255,0.1)] transition-colors cursor-pointer"
+                className="p-1.5 rounded-[6px] hover:bg-white/10 transition-colors cursor-pointer"
                 title="Perbesar (+)"
               >
                 <ZoomIn className="h-4 w-4" />
@@ -203,7 +203,7 @@ export function ProofInspectionModal({
               <button
                 type="button"
                 onClick={handleZoomOut}
-                className="p-1.5 rounded-[6px] hover:bg-[rgba(255,255,255,0.1)] transition-colors cursor-pointer"
+                className="p-1.5 rounded-[6px] hover:bg-white/10 transition-colors cursor-pointer"
                 title="Perkecil (-)"
               >
                 <ZoomOut className="h-4 w-4" />
@@ -211,7 +211,7 @@ export function ProofInspectionModal({
               <button
                 type="button"
                 onClick={handleRotate}
-                className="p-1.5 rounded-[6px] hover:bg-[rgba(255,255,255,0.1)] transition-colors cursor-pointer"
+                className="p-1.5 rounded-[6px] hover:bg-white/10 transition-colors cursor-pointer"
                 title="Putar 90°"
               >
                 <RotateCw className="h-4 w-4" />
@@ -219,12 +219,12 @@ export function ProofInspectionModal({
               <button
                 type="button"
                 onClick={handleResetZoom}
-                className="p-1.5 rounded-[6px] hover:bg-[rgba(255,255,255,0.1)] transition-colors cursor-pointer"
+                className="p-1.5 rounded-[6px] hover:bg-white/10 transition-colors cursor-pointer"
                 title="Reset Ukuran"
               >
                 <RefreshCcw className="h-4 w-4" />
               </button>
-              <span className="text-[11px] font-mono px-2 text-[rgba(255,255,255,0.6)]">
+              <span className="text-[11px] font-mono px-2 text-white/60">
                 {Math.round(scale * 100)}%
               </span>
             </div>
@@ -250,59 +250,59 @@ export function ProofInspectionModal({
                   className="max-h-[75vh] max-w-[90%] object-contain rounded-[8px] shadow-2xl pointer-events-none"
                 />
               ) : (
-                <div className="text-[rgba(255,255,255,0.4)] text-xs text-center">
+                <div className="text-white/40 text-xs text-center">
                   Bukti transfer tidak tersedia
                 </div>
               )}
             </div>
 
-            <div className="p-2 bg-[rgba(0,0,0,0.8)] text-[11px] text-[rgba(255,255,255,0.4)] text-center border-t border-[rgba(255,255,255,0.08)]">
+            <div className="p-2 bg-black/60 text-[11px] text-white/40 text-center border-t border-white/10">
               Gunakan klik dan seret mouse untuk menggeser gambar saat diperbesar
             </div>
           </div>
 
           {/* Right Column: Verification Workbench */}
-          <div className="lg:col-span-5 bg-white flex flex-col h-full overflow-y-auto p-6 space-y-5 border-l border-[rgba(0,0,0,0.08)]">
+          <div className="lg:col-span-5 bg-white flex flex-col h-full overflow-y-auto p-6 space-y-5 border-l border-[#E8E8E8]">
             {/* Santri Card */}
-            <div className="p-4 rounded-[12px] bg-[#f6f5f4] border border-[rgba(0,0,0,0.08)] space-y-2">
-              <div className="flex items-center gap-2 text-xs font-semibold text-[#0075de]">
+            <div className="p-4 rounded-[18px] bg-[#F5F5F5] border border-[#E8E8E8] space-y-2">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#202119]">
                 <User className="h-4 w-4" />
                 <span>Identitas Santri</span>
               </div>
-              <div className="text-sm font-bold text-[#111111]">{payment.santriNama}</div>
-              <div className="grid grid-cols-2 gap-2 text-xs text-[#757575]">
+              <div className="text-sm font-bold text-[#202119]">{payment.santriNama}</div>
+              <div className="grid grid-cols-2 gap-2 text-xs text-[#626262]">
                 <div>
                   <span>NIS: </span>
-                  <span className="font-mono text-[#111111]">{payment.santriNis}</span>
+                  <span className="font-mono text-[#202119]">{payment.santriNis}</span>
                 </div>
                 <div>
                   <span>Komplek: </span>
-                  <span className="font-semibold text-[#111111]">{payment.komplekNama}</span>
+                  <span className="font-semibold text-[#202119]">{payment.komplekNama}</span>
                 </div>
                 <div>
                   <span>Kategori: </span>
-                  <span className="text-[#111111]">{payment.kategoriNama}</span>
+                  <span className="text-[#202119]">{payment.kategoriNama}</span>
                 </div>
               </div>
             </div>
 
             {/* Transfer Details Card */}
-            <div className="p-4 rounded-[12px] bg-white border border-[rgba(0,0,0,0.08)] space-y-2">
+            <div className="p-4 rounded-[18px] bg-white border border-[#E8E8E8] space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-[#757575]">Nominal Diajukan Santri:</span>
-                <CurrencyDisplay amount={payment.nominal} className="text-lg font-bold text-[#0075de]" />
+                <span className="text-xs text-[#626262]">Nominal Diajukan Santri:</span>
+                <CurrencyDisplay amount={payment.nominal} className="text-lg font-bold text-[#202119]" />
               </div>
               {payment.catatanSantri && (
-                <div className="pt-2 border-t border-[rgba(0,0,0,0.08)] text-xs">
-                  <span className="text-[#757575]">Catatan: </span>
-                  <span className="text-[#111111] italic">&ldquo;{payment.catatanSantri}&rdquo;</span>
+                <div className="pt-2 border-t border-[#E8E8E8] text-xs">
+                  <span className="text-[#626262]">Catatan: </span>
+                  <span className="text-[#202119] italic">&ldquo;{payment.catatanSantri}&rdquo;</span>
                 </div>
               )}
             </div>
 
             {/* Action Error Notice */}
             {actionError && (
-              <div className="p-3 rounded-[8px] bg-[#fdeeed] border border-[rgba(227,45,20,0.2)] text-[#e32d14] text-xs flex items-center gap-2">
+              <div className="p-3 rounded-[18px] bg-[#FCEDEF] border border-[rgba(200,76,90,0.2)] text-[#C84C5A] text-xs flex items-center gap-2">
                 <AlertCircle className="h-4 w-4 shrink-0" />
                 <span>{actionError}</span>
               </div>
@@ -310,19 +310,19 @@ export function ProofInspectionModal({
 
             {/* Pathway Selector */}
             <div className="space-y-3 pt-2">
-              <div className="text-xs font-semibold text-[rgba(0,0,0,0.6)] uppercase tracking-wider">
+              <div className="text-xs font-semibold text-[#626262] uppercase tracking-wider">
                 Pilih Keputusan Verifikasi
               </div>
 
-              <div className="grid grid-cols-3 gap-1.5 p-1 bg-[#f6f5f4] rounded-[12px]">
+              <div className="grid grid-cols-3 gap-1.5 p-1 bg-[#F5F5F5] rounded-[8px]">
                 <button
                   type="button"
                   onClick={() => setPathway('approve')}
                   className={cn(
                     'py-2 rounded-[8px] text-xs font-semibold transition-all cursor-pointer',
                     pathway === 'approve'
-                      ? 'bg-white text-[#0075de] shadow-sm'
-                      : 'text-[#757575] hover:text-[#111111]'
+                      ? 'bg-white text-[#2B8A60] shadow-sm'
+                      : 'text-[#626262] hover:text-[#202119]'
                   )}
                 >
                   Setujui
@@ -337,7 +337,7 @@ export function ProofInspectionModal({
                     'py-2 rounded-[8px] text-xs font-semibold transition-all cursor-pointer',
                     pathway === 'approve_corrected'
                       ? 'bg-white text-amber-700 shadow-sm'
-                      : 'text-[#757575] hover:text-[#111111]'
+                      : 'text-[#626262] hover:text-[#202119]'
                   )}
                 >
                   Koreksi
@@ -348,8 +348,8 @@ export function ProofInspectionModal({
                   className={cn(
                     'py-2 rounded-[8px] text-xs font-semibold transition-all cursor-pointer',
                     pathway === 'reject'
-                      ? 'bg-white text-[#e32d14] shadow-sm'
-                      : 'text-[#757575] hover:text-[#111111]'
+                      ? 'bg-white text-[#C84C5A] shadow-sm'
+                      : 'text-[#626262] hover:text-[#202119]'
                   )}
                 >
                   Tolak
@@ -358,12 +358,12 @@ export function ProofInspectionModal({
 
               {/* Pathway 1: Standard Approval */}
               {pathway === 'approve' && (
-                <div className="space-y-3 p-4 rounded-[12px] border border-[rgba(0,117,222,0.2)] bg-[#e6f3fe]">
-                  <div className="text-xs text-[#111111]">
-                    Menyetujui pembayaran sebesar <CurrencyDisplay amount={payment.nominal} className="font-bold text-[#0075de]" /> sesuai bukti transfer.
+                <div className="space-y-3 p-4 rounded-[18px] border border-[rgba(43,138,96,0.2)] bg-[#EAF7EF]">
+                  <div className="text-xs text-[#202119]">
+                    Menyetujui pembayaran sebesar <CurrencyDisplay amount={payment.nominal} className="font-bold text-[#2B8A60]" /> sesuai bukti transfer.
                   </div>
 
-                  <div className="text-[11px] text-[#0075de] bg-white p-2.5 rounded-[8px] border border-[rgba(0,117,222,0.2)] space-y-1">
+                  <div className="text-[11px] text-[#2B8A60] bg-white p-2.5 rounded-[8px] border border-[rgba(43,138,96,0.2)] space-y-1">
                     <div className="font-semibold">Simulasi Alokasi Otomatis:</div>
                     <div className="flex justify-between">
                       <span>Alokasi Tabungan Santri:</span>
@@ -381,7 +381,7 @@ export function ProofInspectionModal({
                     type="button"
                     onClick={handleApproveStandard}
                     disabled={isSubmitting}
-                    className="w-full bg-[#0075de] hover:bg-[#0060b8] text-white font-semibold text-xs h-10 shadow-none cursor-pointer rounded-[8px]"
+                    className="w-full bg-[#202119] hover:bg-[#2e2f26] text-white font-semibold text-xs h-10 shadow-none cursor-pointer rounded-[8px] focus-visible:ring-[#315FC4]"
                   >
                     {isSubmitting ? 'Memproses Alokasi...' : `Konfirmasi & Setujui (${formatRupiah(payment.nominal)})`}
                   </Button>
@@ -390,14 +390,14 @@ export function ProofInspectionModal({
 
               {/* Pathway 2: Approve with Corrected Amount */}
               {pathway === 'approve_corrected' && (
-                <div className="space-y-3 p-4 rounded-[12px] border border-amber-200 bg-amber-50/50">
+                <div className="space-y-3 p-4 rounded-[18px] border border-amber-200 bg-[#FFF7ED]">
                   <div className="text-xs text-amber-900">
                     Ubah nominal jika terdapat salah ketik oleh santri sesuai mutasi bank yang valid.
                   </div>
 
                   <div className="space-y-1">
                     <Label className="text-xs font-semibold text-amber-900">
-                      Nominal Sebenarnya (Rp) <span className="text-[#e32d14]">*</span>
+                      Nominal Sebenarnya (Rp) <span className="text-[#C84C5A]">*</span>
                     </Label>
                     <Input
                       type="text"
@@ -407,21 +407,21 @@ export function ProofInspectionModal({
                         const num = parseInt(e.target.value.replace(/\D/g, ''), 10) || 0;
                         setCorrectedNominal(num > 0 ? num.toLocaleString('id-ID') : '');
                       }}
-                      className="font-mono font-bold bg-white border border-[rgba(0,0,0,0.12)] rounded-[8px] focus:ring-1 focus:ring-[#0075de] shadow-none"
+                      className="font-mono font-bold bg-white border border-[#E8E8E8] text-[#202119] rounded-[8px] focus-visible:ring-[#315FC4] shadow-none"
                       placeholder="0"
                     />
                   </div>
 
                   <div className="space-y-1">
                     <Label className="text-xs font-semibold text-amber-900">
-                      Alasan Koreksi <span className="text-[#e32d14]">*</span>
+                      Alasan Koreksi <span className="text-[#C84C5A]">*</span>
                     </Label>
                     <Input
                       type="text"
                       value={alasanKoreksi}
                       onChange={(e) => setAlasanKoreksi(e.target.value)}
                       placeholder="Contoh: Bukti transfer tertera Rp300.000 bukan Rp350.000"
-                      className="text-xs bg-white border border-[rgba(0,0,0,0.12)] rounded-[8px] focus:ring-1 focus:ring-[#0075de] shadow-none"
+                      className="text-xs bg-white border border-[#E8E8E8] text-[#202119] rounded-[8px] focus-visible:ring-[#315FC4] shadow-none"
                     />
                   </div>
 
@@ -429,7 +429,7 @@ export function ProofInspectionModal({
                     type="button"
                     onClick={handleApproveCorrected}
                     disabled={isSubmitting || !correctedNominal || !alasanKoreksi.trim()}
-                    className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs h-10 shadow-none cursor-pointer rounded-[8px]"
+                    className="w-full bg-[#202119] hover:bg-[#2e2f26] text-white font-semibold text-xs h-10 shadow-none cursor-pointer rounded-[8px] focus-visible:ring-[#315FC4]"
                   >
                     {isSubmitting ? 'Menyimpan Koreksi...' : 'Setujui dengan Koreksi Nominal'}
                   </Button>
@@ -438,21 +438,21 @@ export function ProofInspectionModal({
 
               {/* Pathway 3: Reject */}
               {pathway === 'reject' && (
-                <div className="space-y-3 p-4 rounded-[12px] border border-[rgba(227,45,20,0.2)] bg-[#fdeeed]">
-                  <div className="text-xs text-[#e32d14]">
+                <div className="space-y-3 p-4 rounded-[18px] border border-[rgba(200,76,90,0.2)] bg-[#FCEDEF]">
+                  <div className="text-xs text-[#C84C5A]">
                     Tolak bukti transfer yang tidak valid. Santri akan menerima pemberitahuan beserta alasannya.
                   </div>
 
                   {/* Quick Reason Badges */}
                   <div className="space-y-1">
-                    <span className="text-[11px] font-semibold text-[#e32d14]">Alasan Cepat:</span>
+                    <span className="text-[11px] font-semibold text-[#C84C5A]">Alasan Cepat:</span>
                     <div className="flex flex-wrap gap-1.5">
                       {REJECTION_PRESETS.map((preset, idx) => (
                         <button
                           key={idx}
                           type="button"
                           onClick={() => setAlasanPenolakan(preset)}
-                          className="px-2 py-1 rounded-[6px] text-[10px] bg-white border border-[rgba(227,45,20,0.2)] text-[#e32d14] hover:bg-[#fdeeed] transition-colors cursor-pointer"
+                          className="px-2 py-1 rounded-[6px] text-[10px] bg-white border border-[rgba(200,76,90,0.2)] text-[#C84C5A] hover:bg-[#FCEDEF] transition-colors cursor-pointer"
                         >
                           {preset}
                         </button>
@@ -461,15 +461,15 @@ export function ProofInspectionModal({
                   </div>
 
                   <div className="space-y-1">
-                    <Label className="text-xs font-semibold text-[#e32d14]">
-                      Alasan Penolakan (Wajib) <span className="text-[#e32d14]">*</span>
+                    <Label className="text-xs font-semibold text-[#C84C5A]">
+                      Alasan Penolakan (Wajib) <span className="text-[#C84C5A]">*</span>
                     </Label>
                     <Input
                       type="text"
                       value={alasanPenolakan}
                       onChange={(e) => setAlasanPenolakan(e.target.value)}
                       placeholder="Tuliskan alasan penolakan secara jelas..."
-                      className="text-xs bg-white border border-[rgba(0,0,0,0.12)] rounded-[8px] focus:ring-1 focus:ring-[#0075de] shadow-none"
+                      className="text-xs bg-white border border-[#E8E8E8] text-[#202119] rounded-[8px] focus-visible:ring-[#315FC4] shadow-none"
                     />
                   </div>
 
@@ -477,7 +477,7 @@ export function ProofInspectionModal({
                     type="button"
                     onClick={handleReject}
                     disabled={isSubmitting || alasanPenolakan.trim().length < 5}
-                    className="w-full bg-[#f64932] hover:bg-[#e32d14] text-white font-semibold text-xs h-10 shadow-none cursor-pointer rounded-[8px]"
+                    className="w-full bg-[#C84C5A] hover:bg-[#b03d4a] text-white font-semibold text-xs h-10 shadow-none cursor-pointer rounded-[8px] focus-visible:ring-[#315FC4]"
                   >
                     {isSubmitting ? 'Menolak...' : 'Tolak Pembayaran'}
                   </Button>

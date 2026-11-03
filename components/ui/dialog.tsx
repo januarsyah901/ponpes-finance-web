@@ -54,7 +54,7 @@ export function DialogContent({
       />
       <div
         className={cn(
-          "relative z-50 grid w-full max-w-lg gap-4 rounded-[14px] sm:rounded-[16px] border border-[rgba(0,0,0,0.08)] bg-white p-6 shadow-xl duration-200 animate-in zoom-in-95",
+          "relative z-50 grid w-full max-w-lg gap-4 rounded-[18px] border border-[#E8E8E8] bg-white p-6 text-[#202119] shadow-xl duration-200 animate-in zoom-in-95",
           className
         )}
         {...props}
@@ -63,7 +63,7 @@ export function DialogContent({
         <button
           type="button"
           onClick={() => onOpenChange(false)}
-          className="absolute right-4 top-4 rounded-[6px] p-1 text-[#757575] opacity-70 transition-opacity hover:opacity-100 hover:bg-[rgba(55,53,47,0.06)] hover:text-[#111111] focus:outline-none focus:ring-2 focus:ring-[#0075de] focus:ring-offset-2"
+          className="absolute right-4 top-4 rounded-[8px] p-1 text-[#747474] opacity-70 transition-opacity hover:opacity-100 hover:bg-[#F5F5F5] hover:text-[#202119] focus:outline-none focus:ring-2 focus:ring-[#315FC4] focus:ring-offset-2 cursor-pointer"
         >
           <X className="h-4 w-4" />
           <span className="sr-only">Tutup</span>
@@ -103,7 +103,7 @@ export function DialogTitle({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h2
-      className={cn("font-heading text-lg font-semibold leading-none tracking-tight text-[#111111]", className)}
+      className={cn("font-heading text-lg font-semibold leading-none tracking-tight text-[#202119]", className)}
       {...props}
     />
   );
@@ -115,7 +115,7 @@ export function DialogDescription({
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn("text-sm text-[#757575]", className)}
+      className={cn("text-sm text-[#747474]", className)}
       {...props}
     />
   );

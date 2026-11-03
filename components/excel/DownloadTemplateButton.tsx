@@ -76,9 +76,9 @@ export function DownloadTemplateButton() {
       variant="outline"
       size="sm"
       onClick={handleDownload}
-      className="gap-1.5 border border-[rgba(0,0,0,0.12)] bg-white hover:bg-[#f6f5f4] text-[#111111] rounded-[8px] shadow-none"
+      className="gap-1.5 border border-[#E8E8E8] bg-white hover:bg-[#F5F5F5] text-[#202119] rounded-[8px] shadow-none"
     >
-      <Download className="h-4 w-4 text-[#0075de]" />
+      <Download className="h-4 w-4 text-[#202119]" />
       <span>Unduh Template Excel</span>
     </Button>
   );

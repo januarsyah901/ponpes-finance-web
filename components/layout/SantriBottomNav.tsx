@@ -17,7 +17,7 @@ export function SantriBottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-[rgba(0,0,0,0.08)] shadow-none md:hidden">
+    <nav className="fixed bottom-0 inset-x-0 z-40 bg-white border-t border-[#E8E8E8] shadow-none md:hidden">
       <div className="grid grid-cols-5 h-16">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -37,14 +37,14 @@ export function SantriBottomNav() {
               className={cn(
                 "flex flex-col items-center justify-center gap-1 text-[11px] font-medium transition-colors",
                 isActive
-                  ? "text-[#0075de] font-semibold"
-                  : "text-[#757575] hover:text-[#111111]"
+                  ? "text-[#202119] font-semibold"
+                  : "text-[#747474] hover:text-[#202119]"
               )}
             >
               <Icon
                 className={cn(
                   "h-5 w-5 transition-transform",
-                  isActive ? "text-[#0075de] scale-105" : "text-[#757575]"
+                  isActive ? "text-[#202119] scale-105" : "text-[#747474]"
                 )}
               />
               <span>{item.name}</span>

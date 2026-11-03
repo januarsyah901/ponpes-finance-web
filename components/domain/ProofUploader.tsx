@@ -104,7 +104,7 @@ export function ProofUploader({
 
       {/* Error Notice */}
       {error && (
-        <div className="flex items-center gap-2 p-3 rounded-[8px] bg-[#fdeeed] border border-[rgba(227,45,20,0.2)] text-[#e32d14] text-xs">
+        <div className="flex items-center gap-2 p-3 rounded-[8px] bg-[#FCEDEF] border border-[rgba(200,76,90,0.2)] text-[#C84C5A] text-xs">
           <AlertTriangle className="h-4 w-4 shrink-0" />
           <span>{error}</span>
         </div>
@@ -112,10 +112,10 @@ export function ProofUploader({
 
       {/* State A: Result Preview with Compression Stats */}
       {result ? (
-        <div className="relative rounded-[12px] border border-[rgba(0,0,0,0.08)] bg-white p-4 shadow-none">
+        <div className="relative rounded-[18px] border border-[#E8E8E8] bg-white p-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
           <div className="flex items-start gap-4">
             {/* Thumbnail Preview */}
-            <div className="relative h-24 w-24 rounded-[8px] overflow-hidden bg-[#f6f5f4] border border-[rgba(0,0,0,0.08)] shrink-0">
+            <div className="relative h-24 w-24 rounded-[8px] overflow-hidden bg-[#F5F5F5] border border-[#E8E8E8] shrink-0">
               <img
                 src={result.previewUrl}
                 alt="Bukti Transfer"
@@ -125,25 +125,25 @@ export function ProofUploader({
 
             {/* Stats Breakdown */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-[#2b6e4f]">
-                <CheckCircle2 className="h-4 w-4 text-[#2b6e4f]" />
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-[#2B8A60]">
+                <CheckCircle2 className="h-4 w-4 text-[#2B8A60]" />
                 <span>Foto Berhasil Dikompres</span>
               </div>
 
               <div className="mt-2 space-y-1 text-xs">
-                <div className="flex items-center justify-between text-[#757575]">
+                <div className="flex items-center justify-between text-[#747474]">
                   <span>Ukuran Asli:</span>
-                  <span className="font-mono text-[#111111]">{formatBytes(result.originalSize)}</span>
+                  <span className="font-sans tabular-nums lining-nums text-[#202119]">{formatBytes(result.originalSize)}</span>
                 </div>
-                <div className="flex items-center justify-between text-[#757575]">
+                <div className="flex items-center justify-between text-[#747474]">
                   <span>Ukuran Kompresi:</span>
-                  <span className="font-mono font-bold text-[#0075de]">
+                  <span className="font-sans tabular-nums lining-nums font-bold text-[#2B8A60]">
                     {formatBytes(result.compressedSize)} ({(result.compressionRatio * 100).toFixed(1)}%)
                   </span>
                 </div>
-                <div className="flex items-center justify-between text-[#757575]">
+                <div className="flex items-center justify-between text-[#747474]">
                   <span>Dimensi:</span>
-                  <span className="font-mono text-[#111111]">{result.dimensions.width} × {result.dimensions.height} px</span>
+                  <span className="font-sans tabular-nums lining-nums text-[#202119]">{result.dimensions.width} × {result.dimensions.height} px</span>
                 </div>
               </div>
             </div>
@@ -153,7 +153,7 @@ export function ProofUploader({
               <button
                 type="button"
                 onClick={handleClear}
-                className="p-1 rounded-full text-[#757575] hover:text-[#e32d14] hover:bg-[#fdeeed] transition-colors cursor-pointer"
+                className="p-1 rounded-full text-[#747474] hover:text-[#C84C5A] hover:bg-[#FCEDEF] transition-colors cursor-pointer"
                 title="Hapus dan unggah ulang"
               >
                 <X className="h-5 w-5" />
@@ -168,30 +168,30 @@ export function ProofUploader({
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           className={cn(
-            'relative flex flex-col items-center justify-center p-6 rounded-[12px] border-2 border-dashed transition-all duration-200',
+            'relative flex flex-col items-center justify-center p-6 rounded-[18px] border-2 border-dashed transition-all duration-200',
             isDragging
-              ? 'border-[#0075de] bg-[#e6f3fe]'
-              : 'border-[rgba(0,0,0,0.12)] bg-white hover:border-[#0075de]/60 hover:bg-[#f6f5f4]',
+              ? 'border-[#202119] bg-[#F5F5F5]'
+              : 'border-[#E8E8E8] bg-white hover:border-[#202119] hover:bg-[#F5F5F5]',
             (disabled || isProcessing) && 'opacity-60 cursor-not-allowed pointer-events-none'
           )}
         >
           {isProcessing ? (
             <div className="flex flex-col items-center gap-2 py-4 text-center">
-              <RefreshCw className="h-8 w-8 text-[#0075de] animate-spin" />
-              <p className="text-sm font-medium text-[#111111]">Mengompres bukti transfer...</p>
-              <p className="text-xs text-[#757575]">Menyesuaikan ukuran gambar agar di bawah 500 KB</p>
+              <RefreshCw className="h-8 w-8 text-[#F4512A] animate-spin" />
+              <p className="text-sm font-medium text-[#202119]">Mengompres bukti transfer...</p>
+              <p className="text-xs text-[#747474]">Menyesuaikan ukuran gambar agar di bawah 500 KB</p>
             </div>
           ) : (
             <div className="flex flex-col items-center text-center gap-3">
-              <div className="h-12 w-12 rounded-full bg-[#e6f3fe] flex items-center justify-center text-[#0075de]">
+              <div className="h-12 w-12 rounded-full bg-[#FFF0ED] flex items-center justify-center text-[#F4512A]">
                 <UploadCloud className="h-6 w-6" />
               </div>
 
               <div>
-                <p className="text-sm font-semibold text-[#111111]">
+                <p className="text-sm font-semibold text-[#202119]">
                   Tarik & lepas foto bukti transfer ke sini
                 </p>
-                <p className="text-xs text-[#757575] mt-0.5">
+                <p className="text-xs text-[#747474] mt-0.5">
                   Format JPG, PNG, atau WebP. Otomatis dikompres &lt; 500 KB
                 </p>
               </div>
@@ -201,7 +201,7 @@ export function ProofUploader({
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
-                  className="px-4 py-2 rounded-[8px] bg-white border border-[rgba(0,0,0,0.12)] text-xs font-medium text-[#111111] hover:bg-[#f6f5f4] transition-colors shadow-none cursor-pointer"
+                  className="px-4 py-2 rounded-[8px] bg-white border border-[#E8E8E8] text-xs font-medium text-[#202119] hover:bg-[#F5F5F5] transition-colors shadow-none cursor-pointer"
                 >
                   Pilih dari Galeri
                 </button>
@@ -209,7 +209,7 @@ export function ProofUploader({
                 <button
                   type="button"
                   onClick={() => cameraInputRef.current?.click()}
-                  className="flex items-center gap-1.5 px-4 py-2 rounded-[8px] bg-[#0075de] text-white text-xs font-medium hover:bg-[#0060b8] transition-colors shadow-none cursor-pointer"
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-[8px] bg-[#202119] text-white text-xs font-medium hover:bg-[#2e2f26] transition-colors shadow-none cursor-pointer"
                 >
                   <Camera className="h-4 w-4" />
                   <span>Ambil Foto HP</span>
