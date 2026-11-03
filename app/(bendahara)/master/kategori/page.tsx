@@ -12,38 +12,38 @@ export default async function KategoriMasterPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-[#0F172A] font-heading">
+        <h1 className="text-2xl font-bold tracking-tight text-[#111111] font-heading">
           Kategori Santri
         </h1>
-        <p className="text-sm text-[#64748B]">
+        <p className="text-sm text-[#757575]">
           Kategori santri menentukan jadwal tarif syahriah serta syarat kelayakan subsidi pondok.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {categories.map((c) => (
-          <Card key={c.id} className="border-[#E2E8F0] bg-white">
+          <Card key={c.id} className="rounded-[12px] border border-[rgba(0,0,0,0.08)] shadow-none bg-white">
             <CardHeader className="flex flex-row items-start justify-between pb-2">
               <div>
                 <Badge variant="secondary" className="mb-2 font-mono text-[10px]">
                   {c.kode}
                 </Badge>
-                <CardTitle className="text-base font-semibold text-[#0F172A]">
+                <CardTitle className="text-base font-semibold text-[#111111]">
                   {c.nama}
                 </CardTitle>
               </div>
-              <div className="h-9 w-9 rounded-xl bg-[#EBF5F0] text-[#0F5132] flex items-center justify-center shrink-0">
+              <div className="h-9 w-9 rounded-[10px] bg-[#e6f3fe] text-[#0075de] flex items-center justify-center shrink-0">
                 <Tags className="h-4 w-4" />
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-xs text-[#64748B] mb-4 min-h-[32px]">
+              <p className="text-xs text-[#757575] mb-4 min-h-[32px]">
                 {c.deskripsi || 'Tidak ada deskripsi kategori.'}
               </p>
-              <div className="flex items-center justify-between pt-3 border-t border-[#E2E8F0] text-xs">
-                <span className="text-[#64748B]">Santri Terdaftar</span>
-                <span className="font-semibold text-[#0F172A] flex items-center gap-1">
-                  <Users className="h-3.5 w-3.5 text-[#0F5132]" />
+              <div className="flex items-center justify-between pt-3 border-t border-[rgba(0,0,0,0.08)] text-xs">
+                <span className="text-[#757575]">Santri Terdaftar</span>
+                <span className="font-semibold text-[#111111] flex items-center gap-1">
+                  <Users className="h-3.5 w-3.5 text-[#0075de]" />
                   {c.santriCount} santri
                 </span>
               </div>
@@ -52,29 +52,29 @@ export default async function KategoriMasterPage() {
         ))}
       </div>
 
-      <Card className="border-[#E2E8F0] bg-white">
+      <Card className="rounded-[12px] border border-[rgba(0,0,0,0.08)] shadow-none bg-white">
         <CardHeader>
-          <CardTitle className="text-base font-semibold">Tabel Kategori Santri</CardTitle>
+          <CardTitle className="text-base font-semibold text-[#111111]">Tabel Kategori Santri</CardTitle>
         </CardHeader>
         <CardContent className="p-0">
           <Table>
             <TableHeader>
-              <TableRow>
-                <TableHead>Kode Enum</TableHead>
-                <TableHead>Nama Kategori</TableHead>
-                <TableHead>Deskripsi Peran</TableHead>
-                <TableHead className="text-right">Total Santri</TableHead>
+              <TableRow className="bg-[#f6f5f4]">
+                <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider border-b border-[rgba(0,0,0,0.08)]">Kode Enum</TableHead>
+                <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider border-b border-[rgba(0,0,0,0.08)]">Nama Kategori</TableHead>
+                <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider border-b border-[rgba(0,0,0,0.08)]">Deskripsi Peran</TableHead>
+                <TableHead className="text-right text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider border-b border-[rgba(0,0,0,0.08)]">Total Santri</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {categories.map((c) => (
-                <TableRow key={c.id}>
-                  <TableCell className="font-mono text-xs font-semibold text-[#0F5132]">
+                <TableRow key={c.id} className="border-b border-[rgba(0,0,0,0.08)]">
+                  <TableCell className="font-mono text-xs font-semibold text-[#0075de]">
                     {c.kode}
                   </TableCell>
-                  <TableCell className="font-semibold">{c.nama}</TableCell>
-                  <TableCell className="text-xs text-[#64748B]">{c.deskripsi || '-'}</TableCell>
-                  <TableCell className="text-right font-medium">{c.santriCount}</TableCell>
+                  <TableCell className="font-semibold text-[rgba(0,0,0,0.95)]">{c.nama}</TableCell>
+                  <TableCell className="text-xs text-[#757575]">{c.deskripsi || '-'}</TableCell>
+                  <TableCell className="text-right font-medium text-[rgba(0,0,0,0.95)]">{c.santriCount}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

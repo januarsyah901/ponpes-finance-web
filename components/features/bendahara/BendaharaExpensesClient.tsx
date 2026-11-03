@@ -152,19 +152,19 @@ export function BendaharaExpensesClient({
       {/* Header & KPI */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[#0F172A] tracking-tight">Pencatatan Pengeluaran</h1>
-          <p className="text-sm text-[#64748B]">Kelola pengeluaran operasional per komplek secara transparan</p>
+          <h1 className="text-2xl font-bold text-[#111111] tracking-tight">Pencatatan Pengeluaran</h1>
+          <p className="text-sm text-[#757575]">Kelola pengeluaran operasional per komplek secara transparan</p>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsCatOpen(true)}
-            className="px-4 py-2 border border-[#E2E8F0] rounded-xl text-sm font-semibold text-[#0F172A] hover:bg-slate-50 transition"
+            className="px-4 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm font-semibold text-[#111111] hover:bg-[#f6f5f4] transition bg-white shadow-none"
           >
             + Kategori
           </button>
           <button
             onClick={() => setIsInputOpen(true)}
-            className="px-5 py-2 bg-[#0F5132] hover:bg-[#0c3e27] text-white rounded-xl text-sm font-semibold shadow-sm transition flex items-center gap-2"
+            className="px-5 py-2 bg-[#0075de] hover:bg-[#0060b8] text-white rounded-[8px] text-sm font-semibold shadow-none transition flex items-center gap-2"
           >
             <span>+ Catat Pengeluaran</span>
           </button>
@@ -173,34 +173,34 @@ export function BendaharaExpensesClient({
 
       {/* KPI Card */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-xs">
-          <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Total Pengeluaran Aktif</p>
-          <p className="text-2xl font-bold text-[#0F172A] mt-1 font-mono">
+        <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-5 shadow-none">
+          <p className="text-xs font-semibold text-[#757575] uppercase tracking-wider">Total Pengeluaran Aktif</p>
+          <p className="text-2xl font-bold text-[#111111] mt-1 font-mono">
             <CurrencyDisplay amount={totalPengeluaranAktif} />
           </p>
-          <p className="text-xs text-[#64748B] mt-1">{filteredExpenses.filter((e) => e.status === 'aktif').length} transaksi aktif</p>
+          <p className="text-xs text-[#757575] mt-1">{filteredExpenses.filter((e) => e.status === 'aktif').length} transaksi aktif</p>
         </div>
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-xs">
-          <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Total Transaksi</p>
-          <p className="text-2xl font-bold text-[#0F172A] mt-1 font-mono">{filteredExpenses.length}</p>
-          <p className="text-xs text-[#64748B] mt-1">Termasuk koreksi/batal</p>
+        <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-5 shadow-none">
+          <p className="text-xs font-semibold text-[#757575] uppercase tracking-wider">Total Transaksi</p>
+          <p className="text-2xl font-bold text-[#111111] mt-1 font-mono">{filteredExpenses.length}</p>
+          <p className="text-xs text-[#757575] mt-1">Termasuk koreksi/batal</p>
         </div>
-        <div className="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-xs">
-          <p className="text-xs font-semibold text-[#64748B] uppercase tracking-wider">Kategori Pengeluaran</p>
-          <p className="text-2xl font-bold text-[#0F172A] mt-1 font-mono">{categories.length}</p>
-          <p className="text-xs text-[#64748B] mt-1">Kategori aktif</p>
+        <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-5 shadow-none">
+          <p className="text-xs font-semibold text-[#757575] uppercase tracking-wider">Kategori Pengeluaran</p>
+          <p className="text-2xl font-bold text-[#111111] mt-1 font-mono">{categories.length}</p>
+          <p className="text-xs text-[#757575] mt-1">Kategori aktif</p>
         </div>
       </div>
 
       {/* Filter Bar */}
-      <div className="bg-white border border-[#E2E8F0] rounded-2xl p-4 flex flex-wrap gap-4 items-center justify-between">
+      <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] p-4 flex flex-wrap gap-4 items-center justify-between shadow-none">
         <div className="flex flex-wrap items-center gap-3">
           <div>
-            <label className="text-xs text-[#64748B] block mb-1">Filter Komplek</label>
+            <label className="text-xs text-[#757575] block mb-1">Filter Komplek</label>
             <select
               value={filterKomplek}
               onChange={(e) => setFilterKomplek(e.target.value)}
-              className="px-3 py-1.5 border border-[#E2E8F0] rounded-xl text-sm text-[#0F172A] bg-slate-50 focus:outline-none"
+              className="px-3 py-1.5 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm text-[#111111] bg-white focus:outline-none shadow-none"
             >
               <option value="all">Semua Komplek</option>
               {complexList.map((c) => (
@@ -211,11 +211,11 @@ export function BendaharaExpensesClient({
             </select>
           </div>
           <div>
-            <label className="text-xs text-[#64748B] block mb-1">Filter Kategori</label>
+            <label className="text-xs text-[#757575] block mb-1">Filter Kategori</label>
             <select
               value={filterKategori}
               onChange={(e) => setFilterKategori(e.target.value)}
-              className="px-3 py-1.5 border border-[#E2E8F0] rounded-xl text-sm text-[#0F172A] bg-slate-50 focus:outline-none"
+              className="px-3 py-1.5 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm text-[#111111] bg-white focus:outline-none shadow-none"
             >
               <option value="all">Semua Kategori</option>
               {categories.map((c) => (
@@ -229,11 +229,11 @@ export function BendaharaExpensesClient({
       </div>
 
       {/* Table */}
-      <div className="bg-white border border-[#E2E8F0] rounded-2xl shadow-xs overflow-hidden">
+      <div className="bg-white border border-[rgba(0,0,0,0.08)] rounded-[12px] shadow-none overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-sm">
             <thead>
-              <tr className="bg-slate-50 border-b border-[#E2E8F0] text-xs font-semibold text-[#64748B] uppercase tracking-wider">
+              <tr className="bg-[#f6f5f4] border-b border-[rgba(0,0,0,0.08)] text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">
                 <th className="px-5 py-3.5">Tanggal</th>
                 <th className="px-5 py-3.5">Komplek</th>
                 <th className="px-5 py-3.5">Kategori</th>
@@ -243,45 +243,45 @@ export function BendaharaExpensesClient({
                 <th className="px-5 py-3.5 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#E2E8F0]">
+            <tbody className="divide-y divide-[rgba(0,0,0,0.08)]">
               {filteredExpenses.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-5 py-8 text-center text-[#64748B]">
+                  <td colSpan={7} className="px-5 py-8 text-center text-[#757575]">
                     Belum ada data pengeluaran yang tercatat
                   </td>
                 </tr>
               ) : (
                 filteredExpenses.map((e) => (
-                  <tr key={e.id} className={e.status === 'dibatalkan' ? 'bg-red-50/40 opacity-70' : 'hover:bg-slate-50/80 transition'}>
-                    <td className="px-5 py-4 whitespace-nowrap text-[#0F172A] font-medium">
+                  <tr key={e.id} className={e.status === 'dibatalkan' ? 'bg-[#fdeeed]/40 opacity-70' : 'hover:bg-[#f6f5f4]/80 transition'}>
+                    <td className="px-5 py-4 whitespace-nowrap text-[#111111] font-medium">
                       {formatTanggalIndo(e.tanggal)}
                     </td>
-                    <td className="px-5 py-4 whitespace-nowrap text-[#0F172A]">
+                    <td className="px-5 py-4 whitespace-nowrap text-[#111111]">
                       {e.komplek?.nama || '-'}
                     </td>
                     <td className="px-5 py-4 whitespace-nowrap">
-                      <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700">
+                      <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#f6f5f4] text-[#111111]">
                         {e.kategoriPengeluaran?.nama || '-'}
                       </span>
                     </td>
-                    <td className="px-5 py-4 text-[#0F172A] max-w-xs truncate" title={e.keterangan}>
+                    <td className="px-5 py-4 text-[#111111] max-w-xs truncate" title={e.keterangan}>
                       {e.keterangan}
                       {e.status === 'dibatalkan' && e.alasanBatal && (
-                        <div className="text-xs text-red-600 mt-0.5 italic">
+                        <div className="text-xs text-[#e32d14] mt-0.5 italic">
                           Batal: {e.alasanBatal}
                         </div>
                       )}
                     </td>
-                    <td className="px-5 py-4 whitespace-nowrap text-right font-mono font-semibold text-[#0F172A]">
+                    <td className="px-5 py-4 whitespace-nowrap text-right font-mono font-semibold text-[#111111]">
                       <CurrencyDisplay amount={e.nominal} />
                     </td>
                     <td className="px-5 py-4 whitespace-nowrap text-center">
                       {e.status === 'aktif' ? (
-                        <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-[#0F5132] border border-emerald-200">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#ebf5ee] text-[#2b6e4f] border border-[#2b6e4f]/20">
                           Aktif
                         </span>
                       ) : (
-                        <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-50 text-red-600 border border-red-200">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#fdeeed] text-[#e32d14] border border-[#e32d14]/20">
                           Dibatalkan
                         </span>
                       )}
@@ -293,7 +293,7 @@ export function BendaharaExpensesClient({
                             setCancelTargetId(e.id);
                             setAlasanBatal('');
                           }}
-                          className="text-xs text-red-600 hover:text-red-800 font-semibold px-2 py-1 rounded hover:bg-red-50 transition"
+                          className="text-xs text-[#e32d14] hover:text-[#b52411] font-semibold px-2 py-1 rounded hover:bg-[#fdeeed] transition"
                         >
                           Batalkan
                         </button>
@@ -310,21 +310,21 @@ export function BendaharaExpensesClient({
       {/* Modal Input Pengeluaran */}
       {isInputOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-[#E2E8F0]">
-            <h2 className="text-lg font-bold text-[#0F172A] mb-4">Catat Pengeluaran Baru</h2>
+          <div className="bg-white rounded-[12px] max-w-md w-full p-6 shadow-none border border-[rgba(0,0,0,0.08)]">
+            <h2 className="text-lg font-bold text-[#111111] mb-4">Catat Pengeluaran Baru</h2>
             {error && (
-              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-xs text-red-600">
+              <div className="mb-4 p-3 bg-[#fdeeed] border border-[#e32d14]/20 rounded-[8px] text-xs text-[#e32d14]">
                 {error}
               </div>
             )}
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="text-xs font-semibold text-[#64748B] block mb-1">Komplek</label>
+                <label className="text-xs font-semibold text-[#757575] block mb-1">Komplek</label>
                 <select
                   value={komplekId}
                   onChange={(e) => setKomplekId(e.target.value)}
                   required
-                  className="w-full px-3 py-2 border border-[#E2E8F0] rounded-xl text-sm bg-slate-50 focus:outline-none"
+                  className="w-full px-3 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white focus:outline-none shadow-none"
                 >
                   {complexList.map((c) => (
                     <option key={c.id} value={c.id}>
@@ -334,12 +334,12 @@ export function BendaharaExpensesClient({
                 </select>
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#64748B] block mb-1">Kategori Pengeluaran</label>
+                <label className="text-xs font-semibold text-[#757575] block mb-1">Kategori Pengeluaran</label>
                 <select
                   value={kategoriId}
                   onChange={(e) => setKategoriId(e.target.value)}
                   required
-                  className="w-full px-3 py-2 border border-[#E2E8F0] rounded-xl text-sm bg-slate-50 focus:outline-none"
+                  className="w-full px-3 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white focus:outline-none shadow-none"
                 >
                   {categories.map((c) => (
                     <option key={c.id} value={c.id}>
@@ -349,17 +349,17 @@ export function BendaharaExpensesClient({
                 </select>
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#64748B] block mb-1">Tanggal</label>
+                <label className="text-xs font-semibold text-[#757575] block mb-1">Tanggal</label>
                 <input
                   type="date"
                   value={tanggal}
                   onChange={(e) => setTanggal(e.target.value)}
                   required
-                  className="w-full px-3 py-2 border border-[#E2E8F0] rounded-xl text-sm bg-slate-50 focus:outline-none"
+                  className="w-full px-3 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white focus:outline-none shadow-none"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#64748B] block mb-1">Nominal (Rp)</label>
+                <label className="text-xs font-semibold text-[#757575] block mb-1">Nominal (Rp)</label>
                 <input
                   type="number"
                   placeholder="Contoh: 150000"
@@ -367,32 +367,32 @@ export function BendaharaExpensesClient({
                   onChange={(e) => setNominal(e.target.value)}
                   required
                   min="1"
-                  className="w-full px-3 py-2 border border-[#E2E8F0] rounded-xl text-sm bg-slate-50 focus:outline-none font-mono"
+                  className="w-full px-3 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white focus:outline-none font-mono shadow-none"
                 />
               </div>
               <div>
-                <label className="text-xs font-semibold text-[#64748B] block mb-1">Keterangan</label>
+                <label className="text-xs font-semibold text-[#757575] block mb-1">Keterangan</label>
                 <textarea
-                  placeholder="Misal: Belanja beras & lauk mingguan santri"
+                  placeholder="Misal: Belanja beras &amp; lauk mingguan santri"
                   value={keterangan}
                   onChange={(e) => setKeterangan(e.target.value)}
                   required
                   rows={2}
-                  className="w-full px-3 py-2 border border-[#E2E8F0] rounded-xl text-sm bg-slate-50 focus:outline-none"
+                  className="w-full px-3 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white focus:outline-none shadow-none"
                 />
               </div>
               <div className="flex justify-end gap-3 pt-2">
                 <button
                   type="button"
                   onClick={() => setIsInputOpen(false)}
-                  className="px-4 py-2 border border-[#E2E8F0] rounded-xl text-sm font-semibold text-[#64748B] hover:bg-slate-50"
+                  className="px-4 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm font-semibold text-[#757575] hover:bg-[#f6f5f4] shadow-none"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="px-5 py-2 bg-[#0F5132] text-white rounded-xl text-sm font-semibold hover:bg-[#0c3e27]"
+                  className="px-5 py-2 bg-[#0075de] text-white rounded-[8px] text-sm font-semibold hover:bg-[#0060b8] shadow-none"
                 >
                   {loading ? 'Menyimpan...' : 'Simpan'}
                 </button>
@@ -405,34 +405,34 @@ export function BendaharaExpensesClient({
       {/* Modal Batal Pengeluaran */}
       {cancelTargetId && (
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-[#E2E8F0]">
-            <h2 className="text-base font-bold text-red-600 mb-2">Batalkan Pengeluaran</h2>
-            <p className="text-xs text-[#64748B] mb-4">
+          <div className="bg-white rounded-[12px] max-w-sm w-full p-6 shadow-none border border-[rgba(0,0,0,0.08)]">
+            <h2 className="text-base font-bold text-[#e32d14] mb-2">Batalkan Pengeluaran</h2>
+            <p className="text-xs text-[#757575] mb-4">
               Pengeluaran akan ditandai dibatalkan dan tercatat di audit log (tidak dihapus).
             </p>
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-semibold text-[#64748B] block mb-1">Alasan Pembatalan</label>
+                <label className="text-xs font-semibold text-[#757575] block mb-1">Alasan Pembatalan</label>
                 <textarea
                   placeholder="Misal: Salah input nominal / nota dibatalkan"
                   value={alasanBatal}
                   onChange={(e) => setAlasanBatal(e.target.value)}
                   required
                   rows={2}
-                  className="w-full px-3 py-2 border border-[#E2E8F0] rounded-xl text-sm bg-slate-50 focus:outline-none"
+                  className="w-full px-3 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white focus:outline-none shadow-none"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   onClick={() => setCancelTargetId(null)}
-                  className="px-3 py-1.5 border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#64748B]"
+                  className="px-3 py-1.5 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-xs font-semibold text-[#757575] shadow-none"
                 >
                   Tutup
                 </button>
                 <button
                   onClick={handleCancelExpense}
                   disabled={loading || !alasanBatal.trim()}
-                  className="px-4 py-1.5 bg-red-600 text-white rounded-xl text-xs font-semibold hover:bg-red-700 disabled:opacity-50"
+                  className="px-4 py-1.5 bg-[#f64932] text-white rounded-[8px] text-xs font-semibold hover:bg-[#e32d14] disabled:opacity-50 shadow-none"
                 >
                   {loading ? 'Proses...' : 'Konfirmasi Batal'}
                 </button>
@@ -445,30 +445,30 @@ export function BendaharaExpensesClient({
       {/* Modal Tambah Kategori */}
       {isCatOpen && (
         <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-[#E2E8F0]">
-            <h2 className="text-base font-bold text-[#0F172A] mb-2">Tambah Kategori Pengeluaran</h2>
+          <div className="bg-white rounded-[12px] max-w-sm w-full p-6 shadow-none border border-[rgba(0,0,0,0.08)]">
+            <h2 className="text-base font-bold text-[#111111] mb-2">Tambah Kategori Pengeluaran</h2>
             <div className="space-y-3">
               <div>
-                <label className="text-xs font-semibold text-[#64748B] block mb-1">Nama Kategori</label>
+                <label className="text-xs font-semibold text-[#757575] block mb-1">Nama Kategori</label>
                 <input
                   type="text"
-                  placeholder="Misal: Listrik & Air, Konsumsi, Transportasi"
+                  placeholder="Misal: Listrik &amp; Air, Konsumsi, Transportasi"
                   value={newCatName}
                   onChange={(e) => setNewCatName(e.target.value)}
-                  className="w-full px-3 py-2 border border-[#E2E8F0] rounded-xl text-sm bg-slate-50 focus:outline-none"
+                  className="w-full px-3 py-2 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-sm bg-white focus:outline-none shadow-none"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   onClick={() => setIsCatOpen(false)}
-                  className="px-3 py-1.5 border border-[#E2E8F0] rounded-xl text-xs font-semibold text-[#64748B]"
+                  className="px-3 py-1.5 border border-[rgba(0,0,0,0.12)] rounded-[8px] text-xs font-semibold text-[#757575] shadow-none"
                 >
                   Batal
                 </button>
                 <button
                   onClick={handleCreateCategory}
                   disabled={loading || !newCatName.trim()}
-                  className="px-4 py-1.5 bg-[#0F5132] text-white rounded-xl text-xs font-semibold hover:bg-[#0c3e27] disabled:opacity-50"
+                  className="px-4 py-1.5 bg-[#0075de] text-white rounded-[8px] text-xs font-semibold hover:bg-[#0060b8] disabled:opacity-50 shadow-none"
                 >
                   Simpan
                 </button>

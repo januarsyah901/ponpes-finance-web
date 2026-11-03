@@ -130,19 +130,19 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2 flex-1 max-w-xl">
           <div className="relative flex-1 min-w-[200px]">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#94A3B8]" />
+            <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#757575]" />
             <Input
               placeholder="Cari berdasarkan NIS atau Nama..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 h-9 text-xs"
+              className="pl-9 h-9 text-xs border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
             />
           </div>
 
           <select
             value={selectedKomplek}
             onChange={(e) => setSelectedKomplek(e.target.value)}
-            className="h-9 rounded-lg border border-[#E2E8F0] bg-white px-3 text-xs text-[#0F172A] shadow-sm"
+            className="h-9 rounded-[8px] border border-[rgba(0,0,0,0.12)] bg-white px-3 text-xs text-[#111111] shadow-none"
           >
             <option value="all">Semua Komplek</option>
             {complexes.map((c) => (
@@ -155,7 +155,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="h-9 rounded-lg border border-[#E2E8F0] bg-white px-3 text-xs text-[#0F172A] shadow-sm"
+            className="h-9 rounded-[8px] border border-[rgba(0,0,0,0.12)] bg-white px-3 text-xs text-[#111111] shadow-none"
           >
             <option value="all">Semua Status</option>
             <option value="aktif">Aktif</option>
@@ -165,12 +165,12 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
 
         <div className="flex items-center gap-2">
           <Link href="/master/santri/impor">
-            <Button variant="outline" size="sm" className="h-9 text-xs gap-1.5 border-[#0F5132] text-[#0F5132] hover:bg-[#EBF5F0]">
+            <Button variant="outline" size="sm" className="h-9 text-xs gap-1.5 border border-[rgba(0,0,0,0.12)] bg-white text-[#111111] rounded-[8px] shadow-none hover:bg-[#f6f5f4]">
               <FileSpreadsheet className="h-4 w-4" />
               <span>Impor Excel</span>
             </Button>
           </Link>
-          <Button size="sm" onClick={() => setIsAddOpen(true)} className="h-9 text-xs gap-1.5 bg-[#0F5132] hover:bg-[#0B3D26] text-white">
+          <Button size="sm" onClick={() => setIsAddOpen(true)} className="h-9 text-xs gap-1.5 bg-[#0075de] hover:bg-[#0060b8] text-white rounded-[8px] shadow-none">
             <UserPlus className="h-4 w-4" />
             <span>Tambah Santri</span>
           </Button>
@@ -178,48 +178,48 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
       </div>
 
       {/* Santri Directory Table */}
-      <div className="rounded-xl border border-[#E2E8F0] bg-white overflow-hidden shadow-sm">
+      <div className="rounded-[12px] border border-[rgba(0,0,0,0.08)] bg-white overflow-hidden shadow-none">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>NIS</TableHead>
-              <TableHead>Nama Santri</TableHead>
-              <TableHead>Komplek</TableHead>
-              <TableHead>Kategori</TableHead>
-              <TableHead>Tgl Masuk</TableHead>
-              <TableHead>WhatsApp</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Aksi</TableHead>
+            <TableRow className="bg-[#f6f5f4]">
+              <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">NIS</TableHead>
+              <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">Nama Santri</TableHead>
+              <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">Komplek</TableHead>
+              <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">Kategori</TableHead>
+              <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">Tgl Masuk</TableHead>
+              <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">WhatsApp</TableHead>
+              <TableHead className="text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">Status</TableHead>
+              <TableHead className="text-right text-[rgba(0,0,0,0.6)] text-xs font-medium uppercase tracking-wider">Aksi</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredSantri.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={8} className="text-center py-8 text-sm text-[#64748B]">
+                <TableCell colSpan={8} className="text-center py-8 text-sm text-[#757575]">
                   Tidak ada santri yang sesuai dengan kriteria pencarian.
                 </TableCell>
               </TableRow>
             ) : (
               filteredSantri.map((s) => (
-                <TableRow key={s.id}>
-                  <TableCell className="font-mono text-xs font-semibold text-[#0F172A]">
+                <TableRow key={s.id} className="border-b border-[rgba(0,0,0,0.08)]">
+                  <TableCell className="font-mono text-xs font-semibold text-[#111111]">
                     {s.nis}
                   </TableCell>
                   <TableCell>
-                    <div className="font-semibold text-sm text-[#0F172A]">{s.nama}</div>
+                    <div className="font-semibold text-sm text-[#111111]">{s.nama}</div>
                     {s.namaWali && (
-                      <div className="text-[11px] text-[#64748B]">Wali: {s.namaWali}</div>
+                      <div className="text-[11px] text-[#757575]">Wali: {s.namaWali}</div>
                     )}
                   </TableCell>
                   <TableCell>
-                    <Badge variant="outline" className="font-mono text-[10px]">
+                    <Badge variant="outline" className="font-mono text-[10px] border-[rgba(0,0,0,0.08)]">
                       {s.komplekKode}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <span className="text-xs text-[#475569]">{s.kategoriNama}</span>
+                    <span className="text-xs text-[#757575]">{s.kategoriNama}</span>
                   </TableCell>
-                  <TableCell className="text-xs text-[#64748B]">
+                  <TableCell className="text-xs text-[#757575]">
                     {formatDateIndo(s.tanggalMasuk)}
                   </TableCell>
                   <TableCell>
@@ -227,9 +227,9 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                       href={`https://wa.me/${s.nomorWhatsapp}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-[#0F5132] hover:underline"
+                      className="inline-flex items-center gap-1 text-xs text-[#2b6e4f] hover:underline"
                     >
-                      <Phone className="h-3 w-3 text-[#10B981]" />
+                      <Phone className="h-3 w-3 text-[#2b6e4f]" />
                       <span>{s.nomorWhatsapp}</span>
                     </a>
                   </TableCell>
@@ -241,7 +241,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                       variant="ghost"
                       size="sm"
                       onClick={() => handleToggleStatus(s)}
-                      className="text-xs text-[#64748B] hover:text-[#0F172A]"
+                      className="text-xs text-[#757575] hover:text-[#111111]"
                     >
                       {s.status === 'aktif' ? 'Set Boyong' : 'Aktifkan'}
                     </Button>
@@ -280,7 +280,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                   placeholder="Contoh: 2024010"
                   value={formData.nis}
                   onChange={(e) => setFormData({ ...formData, nis: e.target.value })}
-                  className="h-9 text-xs font-mono"
+                  className="h-9 text-xs font-mono border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
                 />
               </div>
 
@@ -292,7 +292,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                   placeholder="Nama santri"
                   value={formData.nama}
                   onChange={(e) => setFormData({ ...formData, nama: e.target.value })}
-                  className="h-9 text-xs"
+                  className="h-9 text-xs border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
                 />
               </div>
             </div>
@@ -304,7 +304,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                   id="komplekId"
                   value={formData.komplekId}
                   onChange={(e) => setFormData({ ...formData, komplekId: e.target.value })}
-                  className="h-9 w-full rounded-lg border border-[#E2E8F0] bg-white px-3 text-xs"
+                  className="h-9 w-full rounded-[8px] border border-[rgba(0,0,0,0.12)] bg-white px-3 text-xs shadow-none"
                 >
                   {complexes.map((c) => (
                     <option key={c.id} value={c.id}>
@@ -320,7 +320,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                   id="kategoriId"
                   value={formData.kategoriId}
                   onChange={(e) => setFormData({ ...formData, kategoriId: e.target.value })}
-                  className="h-9 w-full rounded-lg border border-[#E2E8F0] bg-white px-3 text-xs"
+                  className="h-9 w-full rounded-[8px] border border-[rgba(0,0,0,0.12)] bg-white px-3 text-xs shadow-none"
                 >
                   {categories.map((c) => (
                     <option key={c.id} value={c.id}>
@@ -340,7 +340,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                   required
                   value={formData.tanggalMasuk}
                   onChange={(e) => setFormData({ ...formData, tanggalMasuk: e.target.value })}
-                  className="h-9 text-xs"
+                  className="h-9 text-xs border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
                 />
               </div>
 
@@ -352,7 +352,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                   placeholder="Contoh: 08123456789"
                   value={formData.nomorWhatsapp}
                   onChange={(e) => setFormData({ ...formData, nomorWhatsapp: e.target.value })}
-                  className="h-9 text-xs"
+                  className="h-9 text-xs border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
                 />
               </div>
             </div>
@@ -365,7 +365,7 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                   placeholder="Nama orang tua/wali"
                   value={formData.namaWali}
                   onChange={(e) => setFormData({ ...formData, namaWali: e.target.value })}
-                  className="h-9 text-xs"
+                  className="h-9 text-xs border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
                 />
               </div>
 
@@ -377,16 +377,16 @@ export function SantriTable({ initialSantri, complexes, categories }: SantriTabl
                   placeholder="0"
                   value={formData.saldoAwalTabungan}
                   onChange={(e) => setFormData({ ...formData, saldoAwalTabungan: Number(e.target.value) })}
-                  className="h-9 text-xs font-mono"
+                  className="h-9 text-xs font-mono border border-[rgba(0,0,0,0.12)] rounded-[8px] bg-white focus:ring-1 focus:ring-[#0075de] shadow-none"
                 />
               </div>
             </div>
 
             <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setIsAddOpen(false)}>
+              <Button type="button" variant="outline" size="sm" onClick={() => setIsAddOpen(false)} className="border border-[rgba(0,0,0,0.12)] bg-white text-[#111111] rounded-[8px] shadow-none hover:bg-[#f6f5f4]">
                 Batal
               </Button>
-              <Button type="submit" size="sm" disabled={isSubmitting} className="bg-[#0F5132] hover:bg-[#0B3D26] text-white">
+              <Button type="submit" size="sm" disabled={isSubmitting} className="bg-[#0075de] hover:bg-[#0060b8] text-white rounded-[8px] shadow-none">
                 {isSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />

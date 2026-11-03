@@ -2,4 +2,4 @@ allowBuilds:
   esbuild: true
   bcryptjs: true
   sharp: true
-  core-js: set this to true or false
+  core-js: false

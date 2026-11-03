@@ -1,17 +1,27 @@
-import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, Source_Serif_4, JetBrains_Mono } from 'next/font/google';
 
-export const fontHeading = Plus_Jakarta_Sans({
+export const fontHeading = Inter({
   subsets: ['latin'],
   variable: '--font-heading',
   display: 'swap',
-  weight: ['600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
+  fallback: ['system-ui', 'sans-serif'],
 });
 
 export const fontSans = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
+  fallback: ['system-ui', 'sans-serif'],
+});
+
+export const fontSerif = Source_Serif_4({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+  weight: ['400'],
+  fallback: ['Georgia', 'serif'],
 });
 
 export const fontMono = JetBrains_Mono({
@@ -19,4 +29,5 @@ export const fontMono = JetBrains_Mono({
   variable: '--font-mono',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
+  fallback: ['monospace'],
 });

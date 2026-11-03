@@ -62,20 +62,20 @@ export function SubsidyExecutionDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fade-in">
-      <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden">
+      <div className="bg-white rounded-[12px] max-w-lg w-full shadow-none border border-[rgba(0,0,0,0.08)] overflow-hidden">
         {/* Header */}
-        <div className="bg-[#0F5132] px-6 py-4 text-white flex justify-between items-center">
+        <div className="bg-[#0075de] px-6 py-4 text-white flex justify-between items-center">
           <div>
             <h3 className="text-lg font-bold font-heading">
               {result ? 'Subsidi Berhasil Diterapkan!' : 'Konfirmasi Eksekusi Penyaluran Subsidi'}
             </h3>
-            <p className="text-xs text-emerald-100">
+            <p className="text-xs text-[#e6f3fe]">
               {result ? 'Transaksi ACID berhasil dibukukan' : 'Tahap 2: Komitmen finansial ke database'}
             </p>
           </div>
           <button
             onClick={handleClose}
-            className="text-emerald-100 hover:text-white text-2xl leading-none"
+            className="text-[#e6f3fe] hover:text-white text-2xl leading-none"
             aria-label="Tutup"
           >
             &times;
@@ -85,85 +85,85 @@ export function SubsidyExecutionDialog({
         <div className="p-6">
           {result ? (
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-2">
+              <div className="w-12 h-12 rounded-full bg-[#ebf5ee] text-[#2b6e4f] flex items-center justify-center mx-auto mb-2">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
 
               <div className="text-center mb-4">
-                <span className="text-xs font-mono uppercase tracking-widest text-slate-400 block mb-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#757575] block mb-1">
                   Bukti Penyaluran Batch
                 </span>
-                <span className="text-sm font-mono font-bold px-3 py-1 bg-slate-100 text-slate-800 rounded-lg">
+                <span className="text-sm font-mono font-bold px-3 py-1 bg-[#f6f5f4] text-[#111111] rounded-[8px]">
                   SUB-{ruleId.slice(0, 8).toUpperCase()}
                 </span>
               </div>
 
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2 text-xs">
-                <div className="flex justify-between py-1 border-b border-slate-100">
-                  <span className="text-slate-500">Aturan Subsidi:</span>
-                  <span className="font-semibold text-slate-800">{result.ruleName}</span>
+              <div className="bg-[#f6f5f4] border border-[rgba(0,0,0,0.08)] rounded-[12px] p-4 space-y-2 text-xs">
+                <div className="flex justify-between py-1 border-b border-[rgba(0,0,0,0.08)]">
+                  <span className="text-[#757575]">Aturan Subsidi:</span>
+                  <span className="font-semibold text-[#111111]">{result.ruleName}</span>
                 </div>
-                <div className="flex justify-between py-1 border-b border-slate-100">
-                  <span className="text-slate-500">Total Santri Penerima:</span>
-                  <span className="font-bold text-[#0F5132] font-mono">{result.totalBeneficiaries} Santri</span>
+                <div className="flex justify-between py-1 border-b border-[rgba(0,0,0,0.08)]">
+                  <span className="text-[#757575]">Total Santri Penerima:</span>
+                  <span className="font-bold text-[#0075de] font-mono">{result.totalBeneficiaries} Santri</span>
                 </div>
-                <div className="flex justify-between py-1 border-b border-slate-100">
-                  <span className="text-slate-500">Total Bantuan Disalurkan:</span>
-                  <CurrencyDisplay amount={result.totalAppliedNominal} className="font-bold font-mono text-emerald-700" />
+                <div className="flex justify-between py-1 border-b border-[rgba(0,0,0,0.08)]">
+                  <span className="text-[#757575]">Total Bantuan Disalurkan:</span>
+                  <CurrencyDisplay amount={result.totalAppliedNominal} className="font-bold font-mono text-[#2b6e4f]" />
                 </div>
                 <div className="flex justify-between py-1">
-                  <span className="text-slate-500">Waktu Eksekusi:</span>
-                  <span className="font-mono text-slate-600">{new Date(result.executionTimestamp).toLocaleString('id-ID')}</span>
+                  <span className="text-[#757575]">Waktu Eksekusi:</span>
+                  <span className="font-mono text-[#757575]">{new Date(result.executionTimestamp).toLocaleString('id-ID')}</span>
                 </div>
               </div>
 
-              <p className="text-[11px] text-slate-500 text-center">
+              <p className="text-[11px] text-[#757575] text-center">
                 Tagihan masing-masing santri telah terpotong secara otomatis dan tercatat dalam buku besar.
               </p>
 
               <button
                 type="button"
                 onClick={handleClose}
-                className="w-full py-2.5 px-4 bg-[#0F5132] hover:bg-[#0b3d26] text-white font-medium rounded-xl text-sm transition"
+                className="w-full py-2.5 px-4 bg-[#0075de] hover:bg-[#0060b8] text-white font-medium rounded-[8px] text-sm transition shadow-none"
               >
-                Tutup & Perbarui Halaman
+                Tutup &amp; Perbarui Halaman
               </button>
             </div>
           ) : (
             <div className="space-y-4">
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 leading-relaxed">
+              <div className="bg-[#fff6e5] border border-[#b47800]/20 rounded-[8px] p-3 text-xs text-[#b47800] leading-relaxed">
                 <span className="font-semibold">Perhatian Finansial:</span> Tindakan ini akan mengunci rekaman data santri, membukukan kredit subsidi ke tagihan tertunggak, dan memotong tabungan (jika sumber dana dari tabungan).
               </div>
 
               {/* Summary Card */}
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-2.5 text-xs">
+              <div className="bg-[#f6f5f4] border border-[rgba(0,0,0,0.08)] rounded-[12px] p-4 space-y-2.5 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Aturan Subsidi</span>
-                  <span className="font-bold text-slate-800">{previewData?.ruleName}</span>
+                  <span className="text-[#757575]">Aturan Subsidi</span>
+                  <span className="font-bold text-[#111111]">{previewData?.ruleName}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Sumber Dana</span>
-                  <span className="font-medium text-slate-800 capitalize">
+                  <span className="text-[#757575]">Sumber Dana</span>
+                  <span className="font-medium text-[#111111] capitalize">
                     {previewData?.sumberDana === 'potong_tabungan' ? 'Tabungan Santri' : 'Bantuan Langsung (Kas Pesantren)'}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Jumlah Santri Terpilih</span>
-                  <span className="font-bold text-[#0F5132] font-mono">{selectedSantriIds.length} Santri</span>
+                  <span className="text-[#757575]">Jumlah Santri Terpilih</span>
+                  <span className="font-bold text-[#0075de] font-mono">{selectedSantriIds.length} Santri</span>
                 </div>
-                <div className="flex justify-between pt-2 border-t border-slate-200">
-                  <span className="text-slate-700 font-semibold">Total Anggaran Penyaluran</span>
+                <div className="flex justify-between pt-2 border-t border-[rgba(0,0,0,0.08)]">
+                  <span className="text-[#111111] font-semibold">Total Anggaran Penyaluran</span>
                   <CurrencyDisplay
                     amount={totalCalculatedBudget}
-                    className="text-base font-bold font-mono text-emerald-700"
+                    className="text-base font-bold font-mono text-[#2b6e4f]"
                   />
                 </div>
               </div>
 
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3">
+                <div className="bg-[#fdeeed] border border-[#e32d14]/20 text-[#e32d14] text-xs rounded-[8px] p-3">
                   {error}
                 </div>
               )}
@@ -173,7 +173,7 @@ export function SubsidyExecutionDialog({
                   type="button"
                   onClick={handleClose}
                   disabled={loading}
-                  className="flex-1 py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium rounded-xl text-sm transition"
+                  className="flex-1 py-2.5 px-4 bg-[#f6f5f4] hover:bg-[rgba(0,0,0,0.08)] text-[#111111] font-medium rounded-[8px] text-sm transition border border-[rgba(0,0,0,0.12)] shadow-none"
                 >
                   Batal
                 </button>
@@ -181,12 +181,12 @@ export function SubsidyExecutionDialog({
                   type="button"
                   onClick={handleExecute}
                   disabled={loading || selectedSantriIds.length === 0}
-                  className="flex-1 py-2.5 px-4 bg-[#0F5132] hover:bg-[#0b3d26] disabled:bg-slate-300 text-white font-semibold rounded-xl text-sm transition flex items-center justify-center gap-2"
+                  className="flex-1 py-2.5 px-4 bg-[#0075de] hover:bg-[#0060b8] disabled:bg-[rgba(0,0,0,0.08)] text-white font-semibold rounded-[8px] text-sm transition flex items-center justify-center gap-2 shadow-none"
                 >
                   {loading ? (
                     <span>Mengeksekusi...</span>
                   ) : (
-                    <span>Konfirmasi & Eksekusi Sekarang</span>
+                    <span>Konfirmasi &amp; Eksekusi Sekarang</span>
                   )}
                 </button>
               </div>

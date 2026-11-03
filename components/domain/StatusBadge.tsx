@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from '@/components/ui/badge';
+import { Badge, type BadgeProps } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
 export type StatusType =
@@ -20,21 +20,21 @@ interface StatusBadgeProps {
 
 const statusConfig: Record<
   string,
-  { label: string; variant: 'default' | 'secondary' | 'warning' | 'destructive' | 'outline' }
+  { label: string; variant: NonNullable<BadgeProps['variant']> }
 > = {
-  lunas: { label: 'Lunas', variant: 'secondary' },
-  terverifikasi: { label: 'Terverifikasi', variant: 'secondary' },
-  aktif: { label: 'Aktif', variant: 'secondary' },
+  lunas: { label: 'Lunas', variant: 'success' },
+  terverifikasi: { label: 'Terverifikasi', variant: 'success' },
+  aktif: { label: 'Aktif', variant: 'success' },
   sebagian: { label: 'Cicilan', variant: 'warning' },
   menunggu_verifikasi: { label: 'Menunggu Verifikasi', variant: 'warning' },
   belum_bayar: { label: 'Belum Bayar', variant: 'destructive' },
   ditolak: { label: 'Ditolak', variant: 'destructive' },
-  dibatalkan: { label: 'Dibatalkan', variant: 'outline' },
-  boyong: { label: 'Boyong', variant: 'outline' },
+  dibatalkan: { label: 'Dibatalkan', variant: 'slate' },
+  boyong: { label: 'Boyong', variant: 'slate' },
 };
 
 export function StatusBadge({ status, className }: StatusBadgeProps) {
-  const config = statusConfig[status] || { label: status, variant: 'outline' as const };
+  const config = statusConfig[status] || { label: status, variant: 'slate' as const };
 
   return (
     <Badge variant={config.variant} className={cn("capitalize font-medium", className)}>
